@@ -14,15 +14,25 @@ import (
 	"strings"
 )
 
+func check(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
+func mustReadFile(path string) string {
+	bytes, err := os.ReadFile(path)
+	check(err)
+	return string(bytes)
+}
+
+// -----------------------------------------------------------------------------
+
 type index struct {
 	Path  string
 	Name  string
 	Title string
 }
-
-var (
-	host = flag.String("host", "localhost:8000", "Serving host")
-)
 
 func listTutorial(dir string) (names []string, err error) {
 	fis, err := ioutil.ReadDir(dir)
@@ -41,18 +51,6 @@ func listTutorial(dir string) (names []string, err error) {
 		}
 	}
 	return
-}
-
-func check(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
-func mustReadFile(path string) string {
-	bytes, err := os.ReadFile(path)
-	check(err)
-	return string(bytes)
 }
 
 func renderIndex(tutorial []string) []byte {
@@ -76,6 +74,8 @@ func renderIndex(tutorial []string) []byte {
 	check(err)
 	return buf.Bytes()
 }
+
+// -----------------------------------------------------------------------------
 
 func handle(root string) func(w http.ResponseWriter, req *http.Request) {
 	result := make(chan []byte, 1)
@@ -104,9 +104,15 @@ func handle(root string) func(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
+var (
+	host = flag.String("host", "localhost:8000", "Serving host")
+)
+
 func main() {
 	flag.Parse()
 	fmt.Println("Serving Go+ tutorial at", *host)
 	http.HandleFunc("/", handle("."))
 	http.ListenAndServe(*host, nil)
 }
+
+// -----------------------------------------------------------------------------
