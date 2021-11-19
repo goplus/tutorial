@@ -1,0 +1,9 @@
+## The second type: function call
+
+println("Hello world")
+
+// This way of writing is more like Python. The basis for understanding this kind of writing is
+// to understand what is a function call. This understanding is not too difficult, especially
+// if middle school students have learned functions (such as sin) in mathematics classes, it
+// is relatively easy to understand. Most programming languages ​​also support this standard
+// function call syntax.

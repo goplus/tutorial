@@ -1,0 +1,23 @@
+## The third type: software engineering
+
+package main
+
+func main() {
+	println("Hello world")
+}
+
+// This is a standard software engineering-based writing method that has been inherited from
+// Go. It is not easy for beginners to understand, because they need to understand what is a
+// function (func) and what is a package (package). Of course, it also has its benefits,
+// starting to allow you to establish some basic logic for functional decomposition and team
+// collaboration.
+
+// So, how do you try to play Go+?
+
+// The simplest, go directly to Go+ Playground to play:
+
+// * https://play.goplus.org/
+
+// When learning basic grammar in the early days, it can actually be done in this way.
+
+// How to install Go+ to play locally? We will talk about this topic later.
