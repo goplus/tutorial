@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -16,6 +17,8 @@ import (
 	"sync/atomic"
 	"text/template"
 	"unsafe"
+
+	gohtml "html"
 
 	"github.com/alecthomas/chroma"
 	"github.com/alecthomas/chroma/formatters/html"
@@ -122,13 +125,28 @@ func renderIndex(tutorial []string) []byte {
 
 // -----------------------------------------------------------------------------
 
+func getURLHash(code string) string {
+	payload := strings.NewReader(code)
+	resp, err := http.Post("https://play.goplus.org/share", "text/plain", payload)
+	check(err)
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		panic("request https://play.goplus.org/share failed: " + resp.Status)
+	}
+	body, err := io.ReadAll(resp.Body)
+	check(err)
+	return string(body)
+}
+
+// -----------------------------------------------------------------------------
+
 // Seg is a segment of an example
 type Seg struct {
 	Docs         []string
 	Code         []string
 	DocsRendered string
 	CodeRendered string
-	CodeForJs    string
+	CodeForClip  string
 	URLHash      string
 	CodeLeading  bool
 }
@@ -199,14 +217,6 @@ func parseSegs(filecontent string) (segs []*Seg) {
 			lastSeen = ltCode
 		}
 	}
-
-	first := true
-	for i, seg := range segs {
-		seg.CodeLeading = (i < (len(segs) - 1))
-		if first && seg.Code != nil { // Only render run icon on first code line
-			seg.URLHash, first = "abc", false
-		}
-	}
 	return
 }
 
@@ -262,30 +272,40 @@ func chromaFormat(code string, filePath string) string {
 	return buf.String()
 }
 
-func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
+func parseAndRenderSegs(sourcePath string) []*Seg {
 	filecontent := mustReadFile(sourcePath)
 	segs := parseSegs(filecontent)
+	var codes []string
 	for _, seg := range segs {
 		if seg.Docs != nil {
 			seg.DocsRendered = string(markdown(seg.Docs))
 		}
 		if seg.Code != nil {
-			seg.CodeForJs = strings.Join(seg.Code, "\n")
-			seg.CodeRendered = chromaFormat(seg.CodeForJs, sourcePath)
+			code := strings.Join(seg.Code, "\n")
+			codes = append(codes, code)
+			seg.CodeRendered = chromaFormat(code, sourcePath)
 		}
 	}
-	// we are only interested in the 'Go+' code to pass to play.goplus.org
-	if !isGopFile(sourcePath) {
-		filecontent = ""
+	if isGopFile(sourcePath) {
+		// we are only interested in the 'Go+' code to pass to play.goplus.org
+		first := true
+		for i, seg := range segs {
+			seg.CodeLeading = (i < (len(segs) - 1))
+			if first && seg.Code != nil { // Only render run icon on first code line
+				codeText := strings.Join(codes, "\n")
+				codeForClip := gohtml.EscapeString(codeText)
+				urlHash := getURLHash(codeText)
+				seg.CodeForClip, seg.URLHash, first = codeForClip, urlHash, false
+			}
+		}
 	}
-	return segs, filecontent
+	return segs
 }
 
 // -----------------------------------------------------------------------------
 
 type exampleFile struct {
-	Segs   []*Seg
-	GoCode string
+	Segs []*Seg
 }
 
 type example struct {
@@ -299,11 +319,8 @@ func parseExample(dir string, idx *exampleIndex) *example {
 	example := &example{exampleIndex: idx}
 	for _, fi := range fis {
 		sourcePath := filepath.Join(dir, fi.Name())
-		sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
+		sourceSegs := parseAndRenderSegs(sourcePath)
 		file := &exampleFile{Segs: sourceSegs}
-		if filecontents != "" {
-			file.GoCode = filecontents
-		}
 		example.Files = append(example.Files, file)
 	}
 	return example
