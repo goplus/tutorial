@@ -22,26 +22,20 @@
   <body>
     <div class="example" id="{{.Path}}">
       <h2><a href="./">Go+ by Tutorials</a>: {{.Title}}</h2>
-      {{range .Files}}
-      <table>
-        {{range .Segs}}
-        <tr>
+      {{range .Files}}<table>
+        {{range .Segs}}<tr>
           {{if .DocsRendered}}<td class="docs">
             {{.DocsRendered}}
           </td>{{end}}
           {{if .CodeRendered}}<td class="code{{if .CodeLeading}} leading{{end}}">
-            {{if .CodeRun}}<a target="_blank" href="http://play.goplus.org/p/{{$.URLHash}}"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />{{end}}
+            {{if .URLHash}}<a target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"><img title="Run code" src="play.png" class="run" /></a><img title="Copy code" src="clipboard.png" class="copy" />{{end}}
             {{.CodeRendered}}
           </td>{{end}}
-        </tr>
-        {{end}}
-      </table>
-      {{end}}
-      {{if .Next}}
-      <p class="next">
+        </tr>{{end}}
+      </table>{{end}}
+      {{if .Next}}<p class="next">
         Next example: <a href="{{.Next.Path}}">{{.Next.Title}}</a>.
-      </p>
-      {{end}}
+      </p>{{end}}
 {{ template "footer" }}
     </div>
     <script>

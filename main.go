@@ -129,8 +129,8 @@ type Seg struct {
 	DocsRendered string
 	CodeRendered string
 	CodeForJs    string
+	URLHash      string
 	CodeLeading  bool
-	CodeRun      bool
 }
 
 var (
@@ -197,6 +197,14 @@ func parseSegs(filecontent string) (segs []*Seg) {
 				segs = append(segs, lastSeg)
 			}
 			lastSeen = ltCode
+		}
+	}
+
+	first := true
+	for i, seg := range segs {
+		seg.CodeLeading = (i < (len(segs) - 1))
+		if first && seg.Code != nil { // Only render run icon on first code line
+			seg.URLHash, first = "abc", false
 		}
 	}
 	return
