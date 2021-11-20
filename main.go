@@ -27,6 +27,10 @@ import (
 	"github.com/russross/blackfriday/v2"
 )
 
+const (
+	chNumLen = 3
+)
+
 var (
 	footerTempl string
 	exampleTmpl *template.Template
@@ -77,8 +81,8 @@ func listTutorial(dir string) (names []string, err error) {
 	for _, fi := range fis {
 		if fi.IsDir() {
 			name := fi.Name()
-			if len(name) > 3 && name[2] == '-' {
-				if _, e := strconv.Atoi(name[:2]); e == nil {
+			if len(name) > (chNumLen+1) && name[chNumLen] == '-' {
+				if _, e := strconv.Atoi(name[:1]); e == nil {
 					names = append(names, name)
 				}
 			}
@@ -99,7 +103,7 @@ func renderIndex(tutorial []string) []byte {
 	var indexes = make(map[string]*exampleIndex, len(tutorial))
 	var prev *exampleIndex
 	for i, name := range tutorial {
-		title := name[3:]
+		title := name[chNumLen+1:]
 		idx := &exampleIndex{
 			Path:  "/" + strings.ToLower(title),
 			Name:  name,
