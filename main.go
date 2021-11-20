@@ -208,7 +208,7 @@ func parseSegs(filecontent string) (segs []*Seg) {
 			}
 			lastSeen = lt
 		} else if lt == ltCode || lastSeen == ltCode {
-			if lastSeen == ltCode {
+			if lastSeen != ltBlank {
 				lastSeg.Code = append(lastSeg.Code, line)
 			} else {
 				lastSeg = &Seg{Code: []string{line}}
@@ -294,7 +294,7 @@ func parseAndRenderSegs(sourcePath string) []*Seg {
 			if first && seg.Code != nil { // Only render run icon on first code line
 				codeText := strings.Join(codes, "\n")
 				codeForClip := gohtml.EscapeString(codeText)
-				urlHash := getURLHash(codeText)
+				urlHash := getURLHash(filecontent)
 				seg.CodeForClip, seg.URLHash, first = codeForClip, urlHash, false
 			}
 		}
