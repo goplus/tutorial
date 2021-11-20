@@ -55,17 +55,13 @@ func mustReadFile(path string) string {
 
 // -----------------------------------------------------------------------------
 
-type exampleCache struct {
-	data []byte
-}
-
 type exampleIndex struct {
 	Path  string
 	Name  string
 	Title string
 	Prev  *exampleIndex
 	Next  *exampleIndex
-	cache *exampleCache
+	cache *example
 }
 
 var (
@@ -333,20 +329,15 @@ func renderExample(e *example) []byte {
 	return buf.Bytes()
 }
 
-func buildExampleCache(dir string, idx *exampleIndex) *exampleCache {
-	example := parseExample(dir, idx)
-	data := renderExample(example)
-	return &exampleCache{data: data}
-}
-
 func handleExample(w http.ResponseWriter, req *http.Request, root, path string) {
 	if idx, ok := exampleIndexes[path]; ok {
 		cache := atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&idx.cache)))
 		if cache == nil {
-			cache = unsafe.Pointer(buildExampleCache(filepath.Join(root, idx.Name), idx))
+			cache = unsafe.Pointer(parseExample(filepath.Join(root, idx.Name), idx))
 			atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&idx.cache)), cache)
 		}
-		w.Write(((*exampleCache)(cache)).data)
+		data := renderExample((*example)(cache))
+		w.Write(data)
 		return
 	}
 	http.ServeFile(w, req, "./public/404.html")
