@@ -68,6 +68,11 @@ type exampleIndex struct {
 	cache *example
 }
 
+type chapter struct {
+	Title    string
+	Articles []*exampleIndex
+}
+
 var (
 	exampleIndexes map[string]*exampleIndex
 )
@@ -99,18 +104,28 @@ func renderIndex(tutorial []string) []byte {
 	check(err)
 
 	var buf bytes.Buffer
-	var examples = make([]*exampleIndex, len(tutorial))
 	var indexes = make(map[string]*exampleIndex, len(tutorial))
+	var chs []*chapter
+	var ch *chapter
 	var prev *exampleIndex
-	for i, name := range tutorial {
+	for _, name := range tutorial {
 		title := name[chNumLen+1:]
+		titleEsc := strings.ReplaceAll(title, "-", " ")
+		if strings.HasSuffix(name[:chNumLen], "00") {
+			ch = &chapter{Title: titleEsc}
+			chs = append(chs, ch)
+			continue
+		}
 		idx := &exampleIndex{
 			Path:  "/" + strings.ToLower(strings.ReplaceAll(gohtml.UnescapeString(title), "/", "-")),
 			Name:  name,
-			Title: strings.ReplaceAll(title, "-", " "),
+			Title: titleEsc,
 		}
-		log.Println(idx.Path)
-		examples[i] = idx
+		if ch == nil {
+			ch = new(chapter)
+			chs = append(chs, ch)
+		}
+		ch.Articles = append(ch.Articles, idx)
 		indexes[idx.Path] = idx
 		if prev != nil {
 			prev.Next = idx
@@ -119,7 +134,7 @@ func renderIndex(tutorial []string) []byte {
 		prev = idx
 	}
 	exampleIndexes = indexes
-	err = indexTmpl.Execute(&buf, examples)
+	err = indexTmpl.Execute(&buf, chs)
 	check(err)
 	return buf.Bytes()
 }

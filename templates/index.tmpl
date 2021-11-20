@@ -13,20 +13,18 @@
         open source programming language designed for
         for engineering, STEM education, and data science.
       </p>
-
       <p>
         <em>Go+ by Tutorial</em> is a hands-on introduction
         to Go+ using annotated example programs. Check out
         the <a href="hello-world">first example</a> or
         browse the full list below.
       </p>
-
-      <ul>
-      {{range .}}
-        <li><a href="{{.Path}}">{{.Title}}</a></li>
-      {{end}}
+      <p></p>
+      {{range .}}{{if .Title}}<h3>{{.Title}}</h3>{{end}}
+      <ul>{{range .Articles}}
+        <li><a href="{{.Path}}">{{.Title}}</a></li>{{end}}
       </ul>
-{{ template "footer" }}
+      {{end}}{{ template "footer" }}
     </div>
   </body>
 </html>
