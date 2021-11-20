@@ -19,8 +19,7 @@
         the <a href="hello-world">first example</a> or
         browse the full list below.
       </p>
-      <p></p>
-      {{range .}}{{if .Title}}<h3>{{.Title}}</h3>{{end}}
+      {{range .}}{{if .Title}}<p></p><h3>{{.Title}}</h3>{{end}}
       <ul>{{range .Articles}}
         <li><a href="{{.Path}}">{{.Title}}</a></li>{{end}}
       </ul>
