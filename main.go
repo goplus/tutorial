@@ -180,15 +180,17 @@ func parseSegs(filecontent string) (segs []*Seg) {
 	for _, line := range lines {
 		trimmed, lt := checkLineType(line)
 		if lt == ltDoc || (lt == ltBlank && lastSeen == ltDoc) {
-			if lastSeen == ltDoc {
-				lastSeg.Docs = append(lastSeg.Docs, trimmed)
-			} else {
-				lastSeg = &Seg{Docs: []string{trimmed}}
-				segs = append(segs, lastSeg)
+			if lt == ltDoc {
+				if lastSeen == ltDoc {
+					lastSeg.Docs = append(lastSeg.Docs, trimmed)
+				} else {
+					lastSeg = &Seg{Docs: []string{trimmed}}
+					segs = append(segs, lastSeg)
+				}
 			}
-			lastSeen = ltDoc
+			lastSeen = lt
 		} else if lt == ltCode || lastSeen == ltCode {
-			if lastSeg != nil {
+			if lastSeen == ltCode {
 				lastSeg.Code = append(lastSeg.Code, line)
 			} else {
 				lastSeg = &Seg{Code: []string{line}}
