@@ -105,10 +105,11 @@ func renderIndex(tutorial []string) []byte {
 	for i, name := range tutorial {
 		title := name[chNumLen+1:]
 		idx := &exampleIndex{
-			Path:  "/" + strings.ToLower(title),
+			Path:  "/" + strings.ToLower(strings.ReplaceAll(gohtml.UnescapeString(title), "/", "-")),
 			Name:  name,
 			Title: strings.ReplaceAll(title, "-", " "),
 		}
+		log.Println(idx.Path)
 		examples[i] = idx
 		indexes[idx.Path] = idx
 		if prev != nil {
