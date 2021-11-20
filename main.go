@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -15,6 +14,7 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
+	"text/template"
 	"unsafe"
 
 	"github.com/alecthomas/chroma"
@@ -159,7 +159,7 @@ func checkLineType(line string) (doc string, lt int) {
 		return strings.TrimPrefix(doc[2:], " "), ltDoc
 	}
 	if strings.HasPrefix(doc, "#") {
-		doc = strings.TrimPrefix(strings.TrimLeft(doc, "#"), " ")
+		doc = "##" + doc
 		lt = ltDoc
 	} else if doc == "" {
 		lt = ltBlank
