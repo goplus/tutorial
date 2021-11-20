@@ -7,16 +7,12 @@
   </head>
   <script>
       onkeydown = (e) => {
-          {{if .Prev}}
-          if (e.key == "ArrowLeft") {
+          {{if .Prev}}if (e.key == "ArrowLeft") {
               window.location.href = '{{.Prev.Path}}';
-          }
-          {{end}}
-          {{if .Next}}
-          if (e.key == "ArrowRight") {
+          }{{end}}
+          {{if .Next}}if (e.key == "ArrowRight") {
               window.location.href = '{{.Next.Path}}';
-          }
-          {{end}}
+          }{{end}}
       }
   </script>
   <body>
