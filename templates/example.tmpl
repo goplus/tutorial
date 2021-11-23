@@ -25,6 +25,9 @@
       </ul>
       <div class="text-wrapper">
         <h2>{{.Title}}</h2>
+        {{if .Files}}{{else}}
+          <p>No content, you can help us <a href="https://github.com/goplus/tutorial/tree/main/{{.Name}}">build it</a>.</p>
+        {{end}}
         {{range .Files}}
           {{range .Segs}}
             {{if .HasDocsAndCode}}
