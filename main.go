@@ -32,14 +32,18 @@ const (
 )
 
 var (
+	headerTempl string
 	footerTempl string
 	exampleTmpl *template.Template
 )
 
 func init() {
+	headerTempl = mustReadFile("templates/header.tmpl")
 	footerTempl = mustReadFile("templates/footer.tmpl")
 	exampleTmpl = template.New("example")
-	_, err := exampleTmpl.Parse(footerTempl)
+	_, err := exampleTmpl.Parse(headerTempl)
+	check(err)
+	_, err = exampleTmpl.Parse(footerTempl)
 	check(err)
 	_, err = exampleTmpl.Parse(mustReadFile("templates/example.tmpl"))
 	check(err)
@@ -98,7 +102,9 @@ func listTutorial(dir string) (names []string, err error) {
 
 func renderIndex(tutorial []string) []byte {
 	indexTmpl := template.New("index")
-	_, err := indexTmpl.Parse(footerTempl)
+	_, err := indexTmpl.Parse(headerTempl)
+	check(err)
+	_, err = indexTmpl.Parse(footerTempl)
 	check(err)
 	_, err = indexTmpl.Parse(mustReadFile("templates/index.tmpl"))
 	check(err)
@@ -158,13 +164,15 @@ func getURLHash(code string) string {
 
 // Seg is a segment of an example
 type Seg struct {
-	Docs         []string
-	Code         []string
-	DocsRendered string
-	CodeRendered string
-	CodeForClip  string
-	URLHash      string
-	CodeLeading  bool
+	Docs           []string
+	Code           []string
+	HasDocsAndCode bool
+	DocsRendered   string
+	CodeRendered   string
+	CodeForClip    string
+	URLHash        string
+	IsFirstCode    bool
+	IsLastCode     bool
 }
 
 var (
@@ -301,18 +309,26 @@ func parseAndRenderSegs(sourcePath string) []*Seg {
 			codes = append(codes, code)
 			seg.CodeRendered = chromaFormat(code, sourcePath)
 		}
+		seg.HasDocsAndCode = seg.Docs != nil && seg.Code != nil
 	}
 	if isGopFile(sourcePath) {
 		// we are only interested in the 'Go+' code to pass to play.goplus.org
-		first := true
+		isFirstCode := true
+		lastCodeIndex := -1
 		for i, seg := range segs {
-			seg.CodeLeading = (i < (len(segs) - 1))
-			if first && seg.Code != nil { // Only render run icon on first code line
+			if isFirstCode && seg.Code != nil { // Only render run icon on first code line
+				seg.IsFirstCode = true
 				codeText := strings.Join(codes, "\n")
 				codeForClip := gohtml.EscapeString(codeText)
 				urlHash := getURLHash(filecontent)
-				seg.CodeForClip, seg.URLHash, first = codeForClip, urlHash, false
+				seg.CodeForClip, seg.URLHash, isFirstCode = codeForClip, urlHash, false
 			}
+			if seg.Code != nil {
+				lastCodeIndex = i
+			}
+		}
+		if lastCodeIndex >= 0 {
+			segs[lastCodeIndex].IsLastCode = true
 		}
 	}
 	return segs

@@ -3,27 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title>Go+ by Tutorial</title>
-    <link rel=stylesheet href="site.css">
+    <link rel=stylesheet href="/site.css">
   </head>
   <body>
-    <div id="intro">
-      <h2><a href="./">Go+ by Tutorial</a></h2>
-      <p>
-        <a href="https://goplus.org/">Go+</a> is an
-        open source programming language designed for
-        for engineering, STEM education, and data science.
-      </p>
-      <p>
-        <em>Go+ by Tutorial</em> is a hands-on introduction
-        to Go+ using annotated example programs. Check out
-        the <a href="hello-world">first example</a> or
-        browse the full list below.
-      </p>
-      {{range .}}{{if .Title}}<p></p><h3>{{.Title}}</h3>{{end}}
-      <ul>{{range .Articles}}
-        <li><a href="{{.Path}}">{{.Title}}</a></li>{{end}}
+    {{ template "header" }}
+    <main class="main">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-link-item"><a href="https://goplus.org">Go+</a></li>
+        <li class="breadcrumb-current-item">Tutorial</li>
       </ul>
-      {{end}}{{ template "footer" }}
-    </div>
+      <div class="text-wrapper">
+        <h2>Tutorial</h2>
+        <p>
+          <a href="https://goplus.org/">Go+</a> is an
+          open source programming language designed for
+          for engineering, STEM education, and data science.
+        </p>
+        <p>
+          <em>Go+ by Tutorial</em> is a hands-on introduction
+          to Go+ using annotated example programs. Check out
+          the <a href="hello-world">first example</a> or
+          browse the full list below.
+        </p>
+        {{range .}}
+          {{if .Title}}<h3>{{.Title}}</h3>{{end}}
+          <ul class="example-link-list">
+            {{range .Articles}}
+              <li><a class="example-link" href="{{.Path}}">{{.Title}}</a></li>
+            {{end}}
+          </ul>
+        {{end}}
+      </div>
+    </main>
+    {{ template "footer" }}
   </body>
 </html>
