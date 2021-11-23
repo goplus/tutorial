@@ -352,8 +352,10 @@ func parseExample(dir string, idx *exampleIndex) *example {
 	for _, fi := range fis {
 		sourcePath := filepath.Join(dir, fi.Name())
 		sourceSegs := parseAndRenderSegs(sourcePath)
-		file := &exampleFile{Segs: sourceSegs}
-		example.Files = append(example.Files, file)
+		if len(sourceSegs) != 0 { // ignore file with no segs
+			file := &exampleFile{Segs: sourceSegs}
+			example.Files = append(example.Files, file)
+		}
 	}
 	return example
 }
