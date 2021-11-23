@@ -16,25 +16,54 @@
       }
   </script>
   <body>
-    <div class="example" id="{{.Path}}">
-      <h2><a href="./">Go+ by Tutorials</a>: {{.Title}}</h2>
-      {{range .Files}}<table>
-        {{range .Segs}}<tr>
-          {{if .DocsRendered}}<td class="docs">
-            {{.DocsRendered}}
-          </td>{{end}}
-          {{if .CodeRendered}}<td class="code{{if .CodeLeading}} leading{{end}}">
-            {{if .URLHash}}<a target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"><img title="Run code" src="play.png" class="run" /></a>
-            <img class="copy" src="clipboard.png" data-clipboard-text="{{.CodeForClip}}"/>{{end}}
-            {{.CodeRendered}}
-          </td>{{end}}
-        </tr>{{end}}
-      </table>{{end}}
-      {{if .Next}}<p class="next">
-        Next example: <a href="{{.Next.Path}}">{{.Next.Title}}</a>.
-      </p>{{end}}
-{{ template "footer" }}
-    </div>
+    {{ template "header" }}
+    <main class="main example" id="{{.Path}}">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-link-item"><a href="https://goplus.org">Go+</a></li>
+        <li class="breadcrumb-link-item"><a href="/">Tutorial</a></li>
+        <li class="breadcrumb-current-item">{{.Title}}</li>
+      </ul>
+      <div class="text-wrapper">
+        <h2>{{.Title}}</h2>
+        {{range .Files}}
+          {{range .Segs}}
+            {{if .HasDocsAndCode}}
+              <table class="code-with-docs{{if .IsFirstCode}} first{{end}}{{if .IsLastCode}} last{{end}}">
+                <tr>
+                  <td class="docs">{{.DocsRendered}}</td>
+                  <td class="code">
+                    {{if .URLHash}}
+                    <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
+                    <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
+                    {{end}}
+                    {{.CodeRendered}}
+                  </td>
+                </tr>
+              </table>
+            {{else}}
+              {{if .DocsRendered}}
+                <div class="docs">{{.DocsRendered}}</div>
+              {{end}}
+              {{if .CodeRendered}}
+                <div class="code">
+                  {{if .URLHash}}
+                  <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
+                  <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
+                  {{end}}
+                  {{.CodeRendered}}
+                </div>
+              {{end}}
+            {{end}}
+          {{end}}
+        {{end}}
+        {{if .Next}}
+        <p class="next">
+          Next example: <a href="{{.Next.Path}}">{{.Next.Title}}</a>
+        </p>
+        {{end}}
+      </div>
+    </main>
+    {{ template "footer" }}
     <script src="./clipboard.min.js"></script>
     <script>
     new ClipboardJS('.copy')

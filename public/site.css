@@ -1,10 +1,10 @@
 /* CSS reset: http://meyerweb.com/eric/tools/css/reset/ */
-
+/* 
 :root {
   --layout-width: 1000px;
   --layout-doc-width: 420px;
   --layout-code-width: 580px;
-}
+} */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -51,108 +51,194 @@ table {
 
 /* Layout and typography */
 body {
-    font-family: 'Georgia', serif;
-    font-size: 16px;
-    line-height: 20px;
-    color: #252519;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    line-height: 1.5715;
+    color: #333;
 }
-em {
+
+/* main wrapper */
+.main {
+    width: 1176px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* breadcrumb */
+.breadcrumb {
+    display: flex;
+    flex-direction: row;
+    margin-top: 36px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.breadcrumb-link-item, .breadcrumb-sep {
+    color: #999999;
+}
+.breadcrumb-link-item::after {
+    content: "/";
+    margin: 0 8px;
+}
+.breadcrumb-link-item a {
+    color: inherit;
+    text-decoration: none;
+    transition: all .3s;
+}
+.breadcrumb-link-item a:hover {
+    color: #333;
+}
+.breadcrumb-sep {
+    margin: 0 8px;
+}
+.breadcrumb-current-item {
+    color: #333;
+}
+
+/* text wrapper */
+.text-wrapper {
+    font-size: 14px;
+    line-height: 1.5715;
+}
+.text-wrapper em {
     font-style: italic;
 }
-a, a:visited {
-    color: #261a3b;
-}
-h2 {
-    font-size: 32px;
-    line-height: 40px;
-    margin-top: 40px;
-}
-h2 a {
+.text-wrapper a {
     text-decoration: none;
 }
-div.example {
-    width: var(--layout-width);
-    min-width: var(--layout-width);
-    max-width: var(--layout-width);
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 120px;
+.text-wrapper a, .text-wrapper a:visited {
+    color: #2C84FF;
 }
-div.example table {
-    margin-top: 15px;
-    margin-bottom: 20px;
+.text-wrapper a:hover {
+    text-decoration: underline;
 }
+.text-wrapper h1, .text-wrapper h2, .text-wrapper h3, .text-wrapper h4, .text-wrapper h5, .text-wrapper h6 {
+    font-weight: 500;
+    font-family: PingFangSC, PingFangSC-Medium, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+.text-wrapper h2 {
+    font-size: 32px;
+    line-height: 45px;
+    margin: 28px 0 40px;
+}
+.text-wrapper h3 {
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 28px 0 24px;
+}
+.text-wrapper h4 {
+    font-size: 16px;
+    margin: 24px 0 20px;
+}
+.text-wrapper h5 {
+    font-size: 14px;
+    margin: 20px 0 16px;
+}
+.text-wrapper p {
+    margin: 22px 0;
+}
+.text-wrapper ul, .text-wrapper ol {
+    margin-bottom: 22px;
+    padding-left: 2em;
+}
+.text-wrapper ul {
+    list-style: initial;
+}
+.text-wrapper ol {
+    list-style: decimal;
+}
+.text-wrapper li {
+    margin-bottom: 10px;
+}
+
+/* example link list in home page */
+.text-wrapper .example-link-list {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    list-style: none;
+    padding: 0;
+}
+.text-wrapper a.example-link {
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    height: 44px;
+    color: #000;
+    background-color: #F5F5F5;
+    transition: all .3s;
+}
+.text-wrapper a.example-link:hover {
+    text-decoration: none;
+    background-color: #EEE;
+}
+.text-wrapper pre, .text-wrapper code {
+    font-family: 'Menlo', 'Monaco', 'Consolas', 'Lucida Console', monospace;
+}
+
+/* next example link in example page */
 p.next {
-    margin-bottom: 20px;
+    margin: 72px 0;
+    padding: 16px 0;
+    border-top: 1px solid #E5E5E5;
 }
-p.footer {
-    color: grey;
+p.next a::after {
+    content: " >";
 }
-p.footer a, p.footer a:visited {
-    color: grey;
-}
-div#intro {
-    width: var(--layout-doc-width);
-    min-width: var(--layout-doc-width);
-    max-width: var(--layout-doc-width);
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 120px;
-}
-div#intro p {
-    padding-top: 20px;
-}
-div#intro ul {
-    padding-top: 20px;
-}
-table td {
-    border: 0;
-    outline: 0;
-}
-td.docs {
-    width: var(--layout-doc-width);
-    min-width: var(--layout-doc-width);
-    max-width: var(--layout-doc-width);
-    min-height: 5px;
+
+/* docs in example page */
+.docs {
+    width: 50%;
     vertical-align: top;
     text-align: left;
 }
-td.docs p {
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 15px;
-}
-td.code {
-    width: var(--layout-code-width);
-    max-width: var(--layout-code-width);
-    min-width: var(--layout-code-width);
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-bottom: 5px;
+.code {
+    width: 50%;
+    min-height: 28px;
+    padding: 20px;
+    margin-bottom: 10px;
     vertical-align: top;
-    background: #f0f0f0;
+    background: #FAFAFA;
 }
-td.code.leading {
-    padding-bottom: 11px;
+
+/* code-with-docs in example page */
+.code-with-docs {
+    width: 100%;
 }
-td.code.empty {
-    background: #ffffff;
+.code-with-docs td {
+    border: 0;
+    outline: 0;
 }
-pre, code {
-    font-size: 14px; line-height: 18px;
-    font-family: 'Menlo', 'Monaco', 'Consolas', 'Lucida Console', monospace;
+.code-with-docs .docs {
+    padding-right: 20px;
 }
-img.copy, img.run {
-  height: 16px;
-  width: 16px;
-  float: right
+.code-with-docs .docs p {
+    margin: 0;
 }
-img.copy, img.run {
-  cursor: pointer;
+.code-with-docs .code {
+    padding: 0 20px 20px;
 }
-img.copy {
-    margin-right: 4px;
+.code-with-docs.first .docs, .code-with-docs.first .code {
+    padding-top: 20px;
+}
+.code-with-docs.last .docs, .code-with-docs.last .code {
+    padding-bottom: 20px;
+}
+
+/* copy & run button for code in example page */
+.copy, .run {
+    float: right;
+    height: 28px;
+    width: 28px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.copy {
+    margin-right: 16px;
+    background: url("/clipboard.svg");
+}
+.run {
+    background: url("/play.svg");
 }
 
 /* Syntax highlighting */
