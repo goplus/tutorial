@@ -24,6 +24,7 @@ import (
 	"github.com/alecthomas/chroma/formatters/html"
 	"github.com/alecthomas/chroma/lexers"
 	"github.com/alecthomas/chroma/styles"
+	"github.com/goplus/tutorial/internal"
 	"github.com/russross/blackfriday/v2"
 )
 
@@ -79,6 +80,7 @@ type chapter struct {
 
 var (
 	exampleIndexes map[string]*exampleIndex
+	watcher *internal.Watcher
 )
 
 func listTutorial(dir string) (names []string, err error) {
@@ -394,7 +396,20 @@ func handle(root string) func(w http.ResponseWriter, req *http.Request) {
 		}
 		text = renderIndex(names)
 		wg.Done()
+
+		watcher, err = internal.NewWatcher(func(string) {
+			for _, v := range exampleIndexes {
+				atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&v.cache)), nil)
+			}
+		})
+		if err != nil {
+			log.Panicln(err)
+		}
+		if err := watcher.Watch(root); err != nil {
+			log.Panicln(err)
+		}
 	}()
+
 	return func(w http.ResponseWriter, req *http.Request) {
 		urlPath := path.Clean(req.URL.Path)
 		if !path.IsAbs(urlPath) {
