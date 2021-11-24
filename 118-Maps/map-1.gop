@@ -1,0 +1,16 @@
+## Map literals in Go+ style
+
+// map[string]int
+println {"Hello": 1, "xsw": 3}
+
+// map[string]float64
+println {"Hello": 1, "xsw": 3.4}
+
+// map[string]interface{}
+println {"Hello": 1, "xsw": "Go+"}
+
+// map[int]interface{}
+println {1: 1.4, 3: "Go+"}
+
+// type of empty map is map[string]interface{}
+println {}
