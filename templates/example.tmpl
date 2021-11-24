@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Go+ by Tutorials: {{.Title}}</title>
-    <link rel=stylesheet href="site.css">
+    <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no"></meta>
+    <link rel=stylesheet href="/site.css">
   </head>
   <script>
       onkeydown = (e) => {
@@ -26,7 +27,7 @@
       <div class="text-wrapper">
         <h2>{{.Title}}</h2>
         {{if .Files}}{{else}}
-          <p>No content, you can help us <a href="https://github.com/goplus/tutorial/tree/main/{{.Name}}">build it</a>.</p>
+          <p>No content yet, you can help us build it <a href="https://github.com/goplus/tutorial/tree/main/{{.Name}}">here</a>.</p>
         {{end}}
         {{range .Files}}
           {{range .Segs}}
