@@ -111,7 +111,7 @@ body {
 
 /* text wrapper */
 .text-wrapper {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5715;
 }
 .text-wrapper em {
@@ -178,7 +178,7 @@ body {
         display: flex;
         align-items: center;
         padding: 9px 16px;
-        height: 44px;
+        min-height: 70px;
         color: #000;
         background-color: #F5F5F5;
         transition: all .3s;
@@ -187,9 +187,6 @@ body {
         text-decoration: none;
         background-color: #EEE;
     }
-}
-.text-wrapper a.example-link {
-    display: block;
 }
 .text-wrapper pre, .text-wrapper code {
     font-family: 'Menlo', 'Monaco', 'Consolas', 'Lucida Console', monospace;
