@@ -37,8 +37,10 @@
                   <td class="docs">{{.DocsRendered}}</td>
                   <td class="code">
                     {{if .URLHash}}
-                    <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
-                    <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
+                    <div class="ops">
+                      <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
+                      <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
+                    </div>
                     {{end}}
                     {{.CodeRendered}}
                   </td>
@@ -51,8 +53,10 @@
               {{if .CodeRendered}}
                 <div class="code">
                   {{if .URLHash}}
-                  <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
-                  <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
+                  <div class="ops">
+                    <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
+                    <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
+                  </div>
                   {{end}}
                   {{.CodeRendered}}
                 </div>

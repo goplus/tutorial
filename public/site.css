@@ -214,12 +214,15 @@ p.next a::after {
     text-align: left;
 }
 .code {
+    position: relative;
     width: 50%;
     min-height: 68px;
-    padding: 20px;
     margin-bottom: 10px;
     vertical-align: top;
     background: #FAFAFA;
+}
+.code pre {
+    padding: 20px;
 }
 @media screen and (max-width: 640px) {
     .docs, .code {
@@ -240,47 +243,53 @@ p.next a::after {
     border: 0;
     outline: 0;
 }
-.code-with-docs .docs {
-    padding-right: 20px;
-}
-.code-with-docs .docs p {
-    margin: 0;
-}
-.code-with-docs .code {
-    padding: 0 20px 20px;
-}
-.code-with-docs.first .docs, .code-with-docs.first .code {
-    padding-top: 20px;
-}
-.code-with-docs.last .docs, .code-with-docs.last .code {
-    padding-bottom: 20px;
+@media screen and (min-width: 641px) {
+    .code-with-docs .docs {
+        padding-right: 20px;
+    }
+    .code-with-docs .docs p {
+        margin: 0;
+    }
+    .code-with-docs .code pre {
+        padding: 0 20px 20px;
+    }
+    .code-with-docs.first .docs, .code-with-docs.first .code pre {
+        padding-top: 20px;
+    }
+    .code-with-docs.last .docs, .code-with-docs.last .code pre {
+        padding-bottom: 20px;
+    }
 }
 @media screen and (max-width: 640px) {
-    .code-with-docs .docs {
-        margin-bottom: 20px;
-        padding: 0;
-    }
-    .code-with-docs.first .docs {
-        padding-top: 0;
-    }
-    .code-with-docs.last .docs {
-        padding-bottom: 0;
-    }
-    .code-with-docs .docs, .code-with-docs .code {
+    .code-with-docs, .code-with-docs tbody, .code-with-docs tr, .code-with-docs .code {
         display: block;
+        overflow-x: hidden;
+    }
+    .code-with-docs .docs {
+        display: block;
+        margin-top: -20px;
+    }
+    .code-with-docs .code pre {
+        overflow-x: auto;
     }
 }
 
-/* copy & run button for code in example page */
+/* operation buttons for code in example page */
+.ops {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: row-reverse;
+}
 .copy, .run {
-    float: right;
     height: 28px;
     width: 28px;
     border: none;
     background: none;
     cursor: pointer;
     position: relative;
-    z-index: 100;
 }
 .copy {
     margin-right: 16px;
