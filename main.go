@@ -80,7 +80,7 @@ type chapter struct {
 
 var (
 	exampleIndexes map[string]*exampleIndex
-	watcher *internal.Watcher
+	watcher        *internal.Watcher
 )
 
 func listTutorial(dir string) (names []string, err error) {
@@ -202,7 +202,7 @@ func checkLineType(line string) (doc string, lt int) {
 	if strings.HasPrefix(doc, "//") {
 		return strings.TrimPrefix(doc[2:], " "), ltDoc
 	}
-	if strings.HasPrefix(doc, "#") {
+	if strings.HasPrefix(doc, "#") && !strings.HasPrefix(doc, "#!") {
 		doc = "##" + doc
 		lt = ltDoc
 	} else if doc == "" {
@@ -234,7 +234,7 @@ func parseSegs(filecontent string) (segs []*Seg) {
 			}
 			lastSeen = lt
 		} else if lt == ltCode || lastSeen == ltCode {
-			if lastSeen != ltBlank {
+			if lastSeen != ltBlank && lastSeg != nil {
 				lastSeg.Code = append(lastSeg.Code, line)
 			} else {
 				lastSeg = &Seg{Code: []string{line}}
