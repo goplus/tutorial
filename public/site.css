@@ -57,11 +57,21 @@ body {
     color: #333;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 /* main wrapper */
 .main {
     width: 1176px;
     position: relative;
     margin: 0 auto;
+}
+@media screen and (max-width: 640px) {
+    .main {
+        width: 100%;
+        padding: 16px;
+    }
 }
 
 /* breadcrumb */
@@ -71,6 +81,11 @@ body {
     margin-top: 36px;
     font-size: 16px;
     line-height: 1.5;
+}
+@media screen and (max-width: 640px) {
+    .breadcrumb {
+        margin-top: 0;
+    }
 }
 .breadcrumb-link-item, .breadcrumb-sep {
     color: #999999;
@@ -96,7 +111,7 @@ body {
 
 /* text wrapper */
 .text-wrapper {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5715;
 }
 .text-wrapper em {
@@ -151,25 +166,27 @@ body {
 }
 
 /* example link list in home page */
-.text-wrapper .example-link-list {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    list-style: none;
-    padding: 0;
-}
-.text-wrapper a.example-link {
-    display: flex;
-    align-items: center;
-    padding: 9px 16px;
-    height: 44px;
-    color: #000;
-    background-color: #F5F5F5;
-    transition: all .3s;
-}
-.text-wrapper a.example-link:hover {
-    text-decoration: none;
-    background-color: #EEE;
+@media screen and (min-width: 641px) {
+    .text-wrapper .example-link-list {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        list-style: none;
+        padding: 0;
+    }
+    .text-wrapper a.example-link {
+        display: flex;
+        align-items: center;
+        padding: 9px 16px;
+        min-height: 70px;
+        color: #000;
+        background-color: #F5F5F5;
+        transition: all .3s;
+    }
+    .text-wrapper a.example-link:hover {
+        text-decoration: none;
+        background-color: #EEE;
+    }
 }
 .text-wrapper pre, .text-wrapper code {
     font-family: 'Menlo', 'Monaco', 'Consolas', 'Lucida Console', monospace;
@@ -184,6 +201,11 @@ p.next {
 p.next a::after {
     content: " >";
 }
+@media screen and (max-width: 640px) {
+    p.next {
+        margin: 36px 0 0;
+    }
+}
 
 /* docs in example page */
 .docs {
@@ -193,11 +215,21 @@ p.next a::after {
 }
 .code {
     width: 50%;
-    min-height: 28px;
+    min-height: 68px;
     padding: 20px;
     margin-bottom: 10px;
     vertical-align: top;
     background: #FAFAFA;
+}
+@media screen and (max-width: 640px) {
+    .docs, .code {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .code {
+        margin-bottom: 20px;
+    }
 }
 
 /* code-with-docs in example page */
@@ -223,6 +255,21 @@ p.next a::after {
 .code-with-docs.last .docs, .code-with-docs.last .code {
     padding-bottom: 20px;
 }
+@media screen and (max-width: 640px) {
+    .code-with-docs .docs {
+        margin-bottom: 20px;
+        padding: 0;
+    }
+    .code-with-docs.first .docs {
+        padding-top: 0;
+    }
+    .code-with-docs.last .docs {
+        padding-bottom: 0;
+    }
+    .code-with-docs .docs, .code-with-docs .code {
+        display: block;
+    }
+}
 
 /* copy & run button for code in example page */
 .copy, .run {
@@ -232,13 +279,15 @@ p.next a::after {
     border: none;
     background: none;
     cursor: pointer;
+    position: relative;
+    z-index: 100;
 }
 .copy {
     margin-right: 16px;
-    background: url("/clipboard.svg");
+    background: #FAFAFA url("/clipboard.svg");
 }
 .run {
-    background: url("/play.svg");
+    background: #FAFAFA url("/play.svg");
 }
 
 /* Syntax highlighting */
