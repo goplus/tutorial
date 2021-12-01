@@ -1,0 +1,13 @@
+# Declaration of a one-dimensional array
+
+// Only the length of the array is declared during initialization
+var linearArray [3]int
+println linearArray
+
+// If you don't want to write the length of the array, you can use this method and let the compiler calculate the length of the array itself
+linearArray1 := [...]int{1, 2, 3}
+println linearArray1
+
+// You can also declare the length of the array with the initial value
+linearArray2 := [3]int{1, 2, 3}
+println linearArray2
