@@ -1,4 +1,4 @@
-## The second type: function call style
+# The second type: function call style
 
 println("Hello world")
 
