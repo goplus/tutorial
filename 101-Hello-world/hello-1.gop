@@ -1,8 +1,6 @@
-# Three ways to write Go+ Hello world
-
 // There are three ways to write Go+'s Hello world.
 
-## The first type: command style
+# The first type: command style
 
 println "Hello world"
 
