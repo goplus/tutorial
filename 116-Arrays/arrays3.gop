@@ -1,0 +1,7 @@
+## tips
+
+// If you do not declare the contents of the array in Go+, the compiler automatically initializes the array to 0; For an array of type bool, the initial value is false.
+
+// For more array value types, Go+ supports strings, integers, floats, Booleans, etc. See this chapter for details:
+
+// * https://tutorial.goplus.org/values
