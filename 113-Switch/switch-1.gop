@@ -1,0 +1,38 @@
+// Go+ provides multi branch conditional statement switch,
+// to perform different actions under different conditions.
+
+// The syntax of switch statement in go + programming language is as follows:
+// switch var {
+//    case var1:
+//  	statement(s);
+//    case var2:
+//    	statement(s);
+//    default: // Optional
+//    	statement(s);
+// }
+
+// Here are a few basic examples.
+
+
+// Example 1: a switch statement with expression
+dayOfTheWeek := 0
+switch dayOfTheWeek {
+case 1:
+	println "Monday"
+case 2:
+	println "Tuesday"
+case 3:
+	println "Wednesday"
+case 4:
+	println "Thursday"
+case 5:
+	println "Friday"
+case 6:
+	println "Saturday"
+case 0:
+	println "Sunday"
+}
+*/
+/* Running results：
+Sunday
+*/
