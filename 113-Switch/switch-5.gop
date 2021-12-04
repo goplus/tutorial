@@ -1,0 +1,33 @@
+// Go+ provides multi branch conditional statement switch,
+// to perform different actions under different conditions.
+
+// The syntax of switch statement in go + programming language is as follows:
+// switch var {
+//    case var1:
+//  	statement(s);
+//    case var2:
+//    	statement(s);
+//    default: // Optional
+//    	statement(s);
+// }
+
+// Here are a few basic examples.
+
+// Example 5: a switch example of multiple expressions in case
+var letter string = "u"
+
+switch letter {
+case "a", "e", "i", "o", "u":
+	printf "%s is a vowel.", letter
+default:
+	printf "%s isn't a vowel.", letter
+}
+
+/* Running results：
+u is a vowel.
+*/
+
+// In go + language, a case branch can contain multiple values or expressions,
+// and each condition is separated by commas.
+// The relationship between multiple values or expressions is equivalent to "and".
+// One of the conditions is matched, the statement of the case will be executed.
