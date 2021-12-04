@@ -1,0 +1,12 @@
+import (
+	"time"
+)
+//需要【go get github.com/goplus/gop/builtin】
+start := time.Now().UnixMicro()
+num := 0
+for i := 0; i <= 10000000; i++ {//一千万此累加
+	num+=i
+}
+end := time.Now().UnixMicro()
+print num,"\n"
+println "一千万次累加消耗时间:", (end-start),"mm"
