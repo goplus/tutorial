@@ -37,21 +37,3 @@ case t.hour() < 12:
 default:
 	println "It's after noon"
 }
-
-// A type `switch` compares types instead of values.  You
-// can use this to discover the type of an interface
-// value.  In this example, the variable `t` will have the
-// type corresponding to its clause.
-whatAmI := func(i interface{}) {
-	switch t := i.(type) {
-	case bool:
-		println "I'm a bool"
-	case int:
-		println "I'm an int"
-	default:
-		printf "Don't know type %T\n", t
-	}
-}
-whatAmI true
-whatAmI 1
-whatAmI "hey"
