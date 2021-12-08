@@ -1,5 +1,11 @@
 # Slice advance
 
+buf := make([]byte, 0, 128)
+buf = append(buf, 'H', 'e', 'l', 'l', 'o')
+buf = append(buf, ' ')
+buf = append(buf, "world"...)
+println string(buf)
+
 // Slices can be composed into multi-dimensional data
 // structures. The length of the inner slices can
 // vary, unlike with multi-dimensional arrays.
