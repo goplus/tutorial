@@ -1,4 +1,4 @@
-# Slice literals
+# Slice literals in Go style
 
 // We can declare and initialize a variable for slice
 // in a single line as well.
