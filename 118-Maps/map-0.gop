@@ -3,12 +3,10 @@
 
 # Map foundations
 
-// To create an empty map, use the builtin `make`:
-// `make(map[key-type]val-type)`.
+// Use `make(map[key-type]val-type)` to create an empty map.
 m := make(map[string]int)
 
-// Set key/value pairs using typical `name[key] = val`
-// syntax.
+// Set key/value pairs using typical `name[key] = val` syntax.
 m["k1"] = 7
 m["k2"] = 13
 
