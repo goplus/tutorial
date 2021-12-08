@@ -5,7 +5,7 @@
     <title>Go+ by Tutorials: {{.Title}}</title>
     <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no"></meta>
     <link rel=stylesheet href="/site.css">
-    <script data-widgets="header,footer" src="https://goplus.org/widgets/loader.js"></script>
+    <script data-widgets="header,footer,code" src="https://goplus.org/widgets/loader.js"></script>
   </head>
   <script>
       onkeydown = (e) => {
@@ -31,39 +31,17 @@
           <p>No content yet, you can help us build it <a href="https://github.com/goplus/tutorial/tree/main/{{.Name}}">here</a>.</p>
         {{end}}
         {{range .Files}}
-          {{range .Segs}}
-            {{if .HasDocsAndCode}}
-              <table class="code-with-docs{{if .IsFirstCode}} first{{end}}{{if .IsLastCode}} last{{end}}">
-                <tr>
-                  <td class="docs">{{.DocsRendered}}</td>
-                  <td class="code">
-                    {{if .URLHash}}
-                    <div class="ops">
-                      <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
-                      <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
-                    </div>
-                    {{end}}
-                    {{.CodeRendered}}
-                  </td>
-                </tr>
-              </table>
-            {{else}}
-              {{if .DocsRendered}}
-                <div class="docs">{{.DocsRendered}}</div>
-              {{end}}
-              {{if .CodeRendered}}
-                <div class="code">
-                  {{if .URLHash}}
-                  <div class="ops">
-                    <a class="run" title="Run code" target="_blank" href="http://play.goplus.org/p/{{.URLHash}}"></a>
-                    <button class="copy" title="Copy code" data-clipboard-text="{{.CodeForClip}}"></button>
-                  </div>
-                  {{end}}
-                  {{.CodeRendered}}
-                </div>
-              {{end}}
+          <div class="docs">
+            {{range .HeadDoc}}
+              {{.DocsRendered}}
             {{end}}
-          {{end}}
+          </div>
+          <goplus-code half-code language="{{.Lang}}">{{range .Code}}{{if .DocsRendered}}<goplus-code-doc>{{.DocsRendered}}</goplus-code-doc>{{end}}{{.CodeRendered}}{{end}}</goplus-code>
+          <div class="docs">
+            {{range .TailDoc}}
+              {{.DocsRendered}}
+            {{end}}
+          </div>
         {{end}}
         {{if .Next}}
         <p class="next">

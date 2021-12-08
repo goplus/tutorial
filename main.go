@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -20,10 +19,6 @@ import (
 
 	gohtml "html"
 
-	"github.com/alecthomas/chroma"
-	"github.com/alecthomas/chroma/formatters/html"
-	"github.com/alecthomas/chroma/lexers"
-	"github.com/alecthomas/chroma/styles"
 	"github.com/goplus/tutorial/internal"
 	"github.com/russross/blackfriday/v2"
 )
@@ -149,45 +144,12 @@ func renderIndex(tutorial []string) []byte {
 
 // -----------------------------------------------------------------------------
 
-func getURLHash(code string) string {
-	payload := strings.NewReader(code)
-	resp, err := http.Post("https://play.goplus.org/share", "text/plain", payload)
-	check(err)
-	defer resp.Body.Close()
-	if resp.StatusCode != 200 {
-		panic("request https://play.goplus.org/share failed: " + resp.Status)
-	}
-	body, err := io.ReadAll(resp.Body)
-	check(err)
-	return string(body)
-}
-
-// -----------------------------------------------------------------------------
-
 // Seg is a segment of an example
 type Seg struct {
-	Docs           []string
-	Code           []string
-	HasDocsAndCode bool
-	DocsRendered   string
-	CodeRendered   string
-	CodeForClip    string
-	URLHash        string
-	IsFirstCode    bool
-	IsLastCode     bool
-}
-
-var (
-	goFileSuffixes = []string{".gop", ".go"}
-)
-
-func isGopFile(sourcePath string) bool {
-	for _, suffix := range goFileSuffixes {
-		if strings.HasSuffix(sourcePath, suffix) {
-			return true
-		}
-	}
-	return false
+	Docs         []string
+	Code         []string
+	DocsRendered string
+	CodeRendered string
 }
 
 const (
@@ -275,62 +237,16 @@ func markdown(docs []string) []byte {
 	return blackfriday.Run(text)
 }
 
-func chromaFormat(code string, filePath string) string {
-	// Currently, Go+ source code will use syntax highlight rules that designed for Go
-	if strings.HasSuffix(filePath, ".gop") {
-		filePath = "main.go"
-	}
-	lexer := lexers.Get(filePath)
-	if lexer == nil {
-		lexer = lexers.Fallback
-	}
-	lexer = chroma.Coalesce(lexer)
-	style := styles.Get("swapoff")
-	if style == nil {
-		style = styles.Fallback
-	}
-	formatter := html.New(html.WithClasses(true))
-	iterator, err := lexer.Tokenise(nil, code)
-	check(err)
-	buf := new(bytes.Buffer)
-	err = formatter.Format(buf, style, iterator)
-	check(err)
-	return buf.String()
-}
-
 func parseAndRenderSegs(sourcePath string) []*Seg {
 	filecontent := mustReadFile(sourcePath)
 	segs := parseSegs(filecontent)
-	var codes []string
 	for _, seg := range segs {
 		if seg.Docs != nil {
 			seg.DocsRendered = string(markdown(seg.Docs))
 		}
 		if seg.Code != nil {
 			code := strings.Join(seg.Code, "\n")
-			codes = append(codes, code)
-			seg.CodeRendered = chromaFormat(code, sourcePath)
-		}
-		seg.HasDocsAndCode = seg.Docs != nil && seg.Code != nil
-	}
-	if isGopFile(sourcePath) {
-		// we are only interested in the 'Go+' code to pass to play.goplus.org
-		isFirstCode := true
-		lastCodeIndex := -1
-		for i, seg := range segs {
-			if isFirstCode && seg.Code != nil { // Only render run icon on first code line
-				seg.IsFirstCode = true
-				codeText := strings.Join(codes, "\n")
-				codeForClip := gohtml.EscapeString(codeText)
-				urlHash := getURLHash(filecontent)
-				seg.CodeForClip, seg.URLHash, isFirstCode = codeForClip, urlHash, false
-			}
-			if seg.Code != nil {
-				lastCodeIndex = i
-			}
-		}
-		if lastCodeIndex >= 0 {
-			segs[lastCodeIndex].IsLastCode = true
+			seg.CodeRendered = code
 		}
 	}
 	return segs
@@ -339,7 +255,14 @@ func parseAndRenderSegs(sourcePath string) []*Seg {
 // -----------------------------------------------------------------------------
 
 type exampleFile struct {
-	Segs []*Seg
+	// Lang is the language of code file, like `gop` / `go`
+	Lang string
+	// HeadDoc is document content before code content
+	HeadDoc []*Seg
+	// Code is all code segments of example file
+	Code []*Seg
+	// TailDoc is document content after code content
+	TailDoc []*Seg
 }
 
 type example struct {
@@ -347,15 +270,45 @@ type example struct {
 	Files []*exampleFile
 }
 
+func classifySegs(segs []*Seg) (headDoc, code, tailDoc []*Seg) {
+	hasSeenCode := false
+	for _, seg := range segs {
+		if seg.Code != nil {
+			code = append(code, seg)
+			hasSeenCode = true
+			continue
+		}
+		if hasSeenCode {
+			// move all doc segs among code segs to tail,
+			// so that single code block will be rendered as result
+			tailDoc = append(tailDoc, seg)
+		} else {
+			headDoc = append(headDoc, seg)
+		}
+	}
+	return
+}
+
+func langOf(fname string) string {
+	i := strings.LastIndex(fname, ".")
+	if i < 0 {
+		return ""
+	}
+	return fname[i+1:]
+}
+
 func parseExample(dir string, idx *exampleIndex) *example {
 	fis, err := ioutil.ReadDir(dir)
 	check(err)
 	example := &example{exampleIndex: idx}
 	for _, fi := range fis {
-		sourcePath := filepath.Join(dir, fi.Name())
+		fname := fi.Name()
+		lang := langOf(fname)
+		sourcePath := filepath.Join(dir, fname)
 		sourceSegs := parseAndRenderSegs(sourcePath)
 		if len(sourceSegs) != 0 { // ignore file with no segs
-			file := &exampleFile{Segs: sourceSegs}
+			headDoc, code, tailDoc := classifySegs(sourceSegs)
+			file := &exampleFile{lang, headDoc, code, tailDoc}
 			example.Files = append(example.Files, file)
 		}
 	}
