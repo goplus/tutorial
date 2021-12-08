@@ -1,6 +1,8 @@
 // _Slices_ are a key data type in Go+, giving a more
 // powerful interface to sequences than arrays.
 
+# Slice foundations
+
 // Unlike arrays, slices are typed only by the
 // elements they contain (not the number of elements).
 // To create an empty slice with non-zero length, use
@@ -49,21 +51,3 @@ println "sl2:", l
 // And this slices up from (and including) `s[2]`.
 l = s[2:]
 println "sl3:", l
-
-// We can declare and initialize a variable for slice
-// in a single line as well.
-t := []string{"g", "h", "i"}
-println "dcl:", t
-
-// Slices can be composed into multi-dimensional data
-// structures. The length of the inner slices can
-// vary, unlike with multi-dimensional arrays.
-twoD := make([][]int, 3)
-for i := 0; i < 3; i++ {
-	innerLen := i + 1
-	twoD[i] = make([]int, innerLen)
-	for j := 0; j < innerLen; j++ {
-		twoD[i][j] = i + j
-	}
-}
-println "2d: ", twoD
