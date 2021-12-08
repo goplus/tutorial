@@ -4,7 +4,7 @@
 
 // Here we use `range` to sum the numbers in a slice.
 // Arrays work like this too.
-nums := []int{2, 3, 4}
+nums := [2, 3, 4]
 sum := 0
 for _, num := range nums {
 	sum += num
@@ -23,7 +23,7 @@ for i, num := range nums {
 }
 
 // `range` on map iterates over key/value pairs.
-kvs := map[string]string{"a": "apple", "b": "banana"}
+kvs := {"a": "apple", "b": "banana"}
 for k, v := range kvs {
 	printf "%s -> %s\n", k, v
 }
