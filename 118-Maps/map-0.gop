@@ -10,7 +10,7 @@ m := make(map[string]int)
 m["k1"] = 7
 m["k2"] = 13
 
-// Printing a map with e.g. `fmt.Println` will show all of
+// Printing a map with e.g. `println` will show all of
 // its key/value pairs.
 println "map:", m
 
