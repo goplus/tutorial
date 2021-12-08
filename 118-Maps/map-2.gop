@@ -1,4 +1,7 @@
-## Map literals in Go style
+# Map literals in Go style
+
+// You can also declare and initialize a new map in
+// the same line with the following syntax.
 
 // {"Hello": 1, "xsw": 3}
 println map[string]int{"Hello": 1, "xsw": 3}
