@@ -37,3 +37,19 @@ case t.hour() < 12:
 default:
 	println "It's after noon"
 }
+
+// The switch in Go+ defaults to a break at the end of each case.
+// Use fallthrough to enforce the code for the subsequent cases.
+
+// `switch` with `fallthrough`:
+var score int = 80
+switch {
+case score < 50:
+	printf "%d < 50\n", score
+	fallthrough
+case score < 100:
+	printf "%d < 100\n", score
+	fallthrough
+case score < 200:
+	printf "%d < 200\n", score
+}
