@@ -270,6 +270,7 @@ type example struct {
 	Files []*exampleFile
 }
 
+// classifySegs classify segments into headDoc, code & tailDoc
 func classifySegs(segs []*Seg) (headDoc, code, tailDoc []*Seg) {
 	hasSeenCode := false
 	for _, seg := range segs {
