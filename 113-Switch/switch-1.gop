@@ -42,7 +42,7 @@ default:
 // Use fallthrough to enforce the code for the subsequent cases.
 
 // `switch` with `fallthrough`:
-var score int = 80
+score := 80
 switch {
 case score < 50:
 	printf "%d < 50\n", score
