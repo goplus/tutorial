@@ -112,7 +112,7 @@ body {
 /* text wrapper */
 .text-wrapper {
     font-size: 16px;
-    line-height: 1.5715;
+    line-height: 1.5;
 }
 .text-wrapper em {
     font-style: italic;
@@ -210,93 +210,11 @@ p.next a::after {
 /* docs in example page */
 .docs {
     width: 50%;
-    vertical-align: top;
-    text-align: left;
-}
-.code {
-    position: relative;
-    width: 50%;
-    min-height: 68px;
-    margin-bottom: 10px;
-    vertical-align: top;
-    background: #FAFAFA;
-}
-.code pre {
-    padding: 20px;
 }
 @media screen and (max-width: 640px) {
-    .docs, .code {
+    .docs {
         width: 100%;
     }
-}
-@media screen and (max-width: 640px) {
-    .code {
-        margin-bottom: 20px;
-    }
-}
-
-/* code-with-docs in example page */
-.code-with-docs {
-    width: 100%;
-}
-.code-with-docs td {
-    border: 0;
-    outline: 0;
-}
-@media screen and (min-width: 641px) {
-    .code-with-docs .docs {
-        padding-right: 20px;
-    }
-    .code-with-docs .docs p {
-        margin: 0;
-    }
-    .code-with-docs .code pre {
-        padding: 0 20px 20px;
-    }
-    .code-with-docs.first .docs, .code-with-docs.first .code pre {
-        padding-top: 20px;
-    }
-    .code-with-docs.last .docs, .code-with-docs.last .code pre {
-        padding-bottom: 20px;
-    }
-}
-@media screen and (max-width: 640px) {
-    .code-with-docs, .code-with-docs tbody, .code-with-docs tr, .code-with-docs .code {
-        display: block;
-        overflow-x: hidden;
-    }
-    .code-with-docs .docs {
-        display: block;
-        margin-top: -20px;
-    }
-    .code-with-docs .code pre {
-        overflow-x: auto;
-    }
-}
-
-/* operation buttons for code in example page */
-.ops {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
-    display: flex;
-    flex-direction: row-reverse;
-}
-.copy, .run {
-    height: 28px;
-    width: 28px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    position: relative;
-}
-.copy {
-    margin-right: 16px;
-    background: #FAFAFA url("/clipboard.svg");
-}
-.run {
-    background: #FAFAFA url("/play.svg");
 }
 
 /* Syntax highlighting */
