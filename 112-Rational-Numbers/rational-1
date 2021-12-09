@@ -1,8 +1,3 @@
-import (
-	"math/big"
-	"reflect"
-)
-
 # Tutorial of rational type in Go+
 
 // Go+ has various rational number types including bigint, bigrat and bigfloat.
@@ -26,11 +21,11 @@ var bint3 bigint = 1r << 65
 // 1. The initial value of a rational variable without assignment is not 0 but "<nil>".
 // 2.
 
-println "bint1 =: ", bint1, ", ", reflect.TypeOf(bint1)
-println "bint2 =: ", bint2, ", ", reflect.TypeOf(bint2)
-println "bint3 =: ", bint3, ", ", reflect.TypeOf(bint3)
+println "bint1 =: ", bint1
+println "bint2 =: ", bint2
+println "bint3 =: ", bint3
 
 // Running results：
-//bint1 =:  <nil> ,  builtin.Gop_bigint
-//bint2 =:  <nil> ,  *big.Int
-//bint3 =:  36893488147419103232 ,  builtin.Gop_bigint
+//bint1 =:  <nil>
+//bint2 =:  <nil>
+//bint3 =:  36893488147419103232
