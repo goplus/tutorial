@@ -3,6 +3,8 @@
 
 # Declaration and assignment of bigint type variables
 
+import "math/big"
+
 // The Go+ language uses the keyword "var" to declare variables.
 var bint1 bigint
 var bint2 *big.Int
