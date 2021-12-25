@@ -17,9 +17,9 @@ var bint3 bigint = 1r << 65
 // The initial value of a rational variable without assignment is not 0 but `<nil>`.
 //
 // Expected results：
-// bint1 =:  `<nil>`
-// bint2 =:  `<nil>`
-// bint3 =:  `36893488147419103232`
-println "bint1 =: ", bint1
-println "bint2 =: ", bint2
-println "bint3 =: ", bint3
+// bint1: `<nil>`
+// bint2: `<nil>`
+// bint3: `36893488147419103232`
+println "bint1:", bint1
+println "bint2:", bint2
+println "bint3:", bint3
