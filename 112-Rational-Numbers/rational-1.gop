@@ -10,7 +10,7 @@ var bint1 bigint
 var bint2 *big.Int
 
 // the integer rational variable can be assigned when declaration.
-// (1r<<65), the value is equal to the 65th power of 2
+// (1r<<65), the value is equal to the 65th power of 2.
 var bint3 bigint = 1r << 65
 
 // Notice:
