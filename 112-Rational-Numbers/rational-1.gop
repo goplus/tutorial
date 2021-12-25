@@ -14,13 +14,12 @@ var bint2 *big.Int
 var bint3 bigint = 1r << 65
 
 // Notice:
-// 1. The initial value of a rational variable without assignment is not 0 but "<nil>".
-// 2.
+// The initial value of a rational variable without assignment is not 0 but `<nil>`.
+//
+// Expected results：
+// bint1 =:  `<nil>`
+// bint2 =:  `<nil>`
+// bint3 =:  `36893488147419103232`
 println "bint1 =: ", bint1
 println "bint2 =: ", bint2
 println "bint3 =: ", bint3
-
-// Expected results：
-// bint1 =:  <nil>
-// bint2 =:  <nil>
-// bint3 =:  36893488147419103232
