@@ -1,0 +1,37 @@
+# 赋值运算符就是可以直接进行赋值的一种运算符
+
+
+var a int = 21
+var c int
+
+c = a
+println("c 值为 = ", c) // c 值为 =  21
+
+c += a
+println("c 值为 = ", c) // c 值为 =  42 
+
+c -= a
+println("c 值为 = ", c) // c 值为 =  21 
+
+c *= a
+println("c 值为 = ", c) // c 值为 =  441
+
+c /= a
+println("c 值为 = ", c) // c 值为 =  21 
+
+c = 200
+
+c <<= 2
+println("c 值为 = ", c) // c 值为 =  800
+
+c >>= 2
+println("c 值为 = ", c) // c 值为 =  200
+
+c &= 2
+println("c 值为 = ", c) // c 值为 =  0
+
+c ^= 2
+println("c 值为 = ", c) // c 值为 =  2
+
+c |= 2
+println("c 值为 = ", c) // c 值为 =  2
