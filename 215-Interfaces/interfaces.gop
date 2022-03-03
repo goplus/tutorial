@@ -1,0 +1,82 @@
+// First, we define a very simple interface on geometry, containing the two most basic interface methods - calculating the area and calculating the perimeter - with the following code:
+
+type geometry interface {
+    area() float64
+    perim() float64
+}
+
+// Next, we define two structs, a rectangular struct and a circular Rectangular struct, with the following code:
+
+type rect struct {
+    width float64, 
+    height float64
+}
+type circle struct {
+    radius float64
+}
+
+
+// Then implement the interface methods defined above respectively, and the code related to the rectangular structure is as follows:
+
+func (c circle) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+func (c circle) perim() float64 {
+    return 2 * math.Pi * c.radius
+}
+
+// Now a complete code example to see how the interface is actually used is as follows:
+
+import (
+    "math"
+)
+
+type geometry interface {
+    area() float64
+    perim() float64
+}
+
+type rect struct {
+    width float64
+    height float64
+}
+type circle struct {
+    radius float64
+}
+
+func (r rect) area() float64 {
+    return r.width * r.height
+}
+func (r rect) perim() float64 {
+    return 2*(r.width + r.height)
+}
+
+func (c circle) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+func (c circle) perim() float64 {
+    return 2 * math.Pi * c.radius
+}
+
+func measure(g geometry) {
+    println(g)
+    println("面积:", g.area())
+    println("周长:", g.perim())
+}
+
+
+r := rect{width: 6, height: 9}
+c := circle{radius: 2}
+
+measure(r)
+measure(c)
+
+
+// Run results
+
+{6 9}
+面积: 54
+周长: 30
+{2}
+面积: 12.566370614359172
+周长: 12.566370614359172
