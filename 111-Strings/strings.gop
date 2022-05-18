@@ -1,11 +1,11 @@
 // A string is a sequence of bytes that cannot be changed. Strings can contain any data and are generally used to save text.
 // We generally use double quotes "" to define a string, but note that there are specific characters that have a specific meaning, which we call escaped characters, and these escaped characters contain:
-
-\n：line break
-\r：Enter
-\t：Tab
-\u or \U：Unicode
-\：Backslash
+//
+// \n：line break
+// \r：Enter
+// \t：Tab
+// \u or \U：Unicode
+// \：Backslash
 
 println("hello" + "\t" + "world") // hello   world
 
