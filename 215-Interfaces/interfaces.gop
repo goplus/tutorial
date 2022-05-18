@@ -72,7 +72,8 @@ measure(r)
 measure(c)
 
 
-// Run results
+/*
+Run results:
 
 {6 9}
 area: 54
@@ -80,3 +81,4 @@ perimeter: 30
 {2}
 area: 12.566370614359172
 perimeter: 12.566370614359172
+*/
