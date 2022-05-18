@@ -60,8 +60,8 @@ func (c circle) perim() float64 {
 
 func measure(g geometry) {
     println(g)
-    println("面积:", g.area())
-    println("周长:", g.perim())
+    println("area:", g.area())
+    println("perimeter:", g.perim())
 }
 
 
@@ -75,8 +75,8 @@ measure(c)
 // Run results
 
 {6 9}
-面积: 54
-周长: 30
+area: 54
+perimeter: 30
 {2}
-面积: 12.566370614359172
-周长: 12.566370614359172
+area: 12.566370614359172
+perimeter: 12.566370614359172
