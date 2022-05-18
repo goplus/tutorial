@@ -1,0 +1,57 @@
+// Now a complete code example to see how the interface is actually used is as follows:
+
+import (
+    "math"
+)
+
+type geometry interface {
+    area() float64
+    perim() float64
+}
+
+type rect struct {
+    width float64
+    height float64
+}
+type circle struct {
+    radius float64
+}
+
+func (r rect) area() float64 {
+    return r.width * r.height
+}
+func (r rect) perim() float64 {
+    return 2*(r.width + r.height)
+}
+
+func (c circle) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+func (c circle) perim() float64 {
+    return 2 * math.Pi * c.radius
+}
+
+func measure(g geometry) {
+    println(g)
+    println("area:", g.area())
+    println("perimeter:", g.perim())
+}
+
+
+r := rect{width: 6, height: 9}
+c := circle{radius: 2}
+
+measure(r)
+measure(c)
+
+
+/*
+Run results:
+
+{6 9}
+area: 54
+perimeter: 30
+{2}
+area: 12.566370614359172
+perimeter: 12.566370614359172
+*/
