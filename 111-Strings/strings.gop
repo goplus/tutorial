@@ -1,25 +1,33 @@
-// A string is a sequence of bytes that cannot be changed. Strings can contain any data and are generally used to save text.
-// We generally use double quotes "" to define a string, but note that there are specific characters that have a specific meaning, which we call escaped characters, and these escaped characters contain:
+// A string is a sequence of bytes that cannot be changed. Strings can contain any data
+// and are generally used to save text.
 //
-// \n：line break
-// \r：Enter
-// \t：Tab
-// \u or \U：Unicode
-// \：Backslash
+// We generally use double quotes "" to define a string, but note that there are specific
+// characters that have a specific meaning, which we call escaped characters, and these
+// escaped characters contain:
+//
+// <pre style="font-size:small">
+//   \n：line break
+//   \r：Enter
+//   \t：Tab
+//   \u or \U：Unicode
+//   \：Backslash
+// </pre>
 
 println("hello" + "\t" + "world") // hello   world
 
-// If we want to know the length of the strings taken up by bytes, we can use Go+'s built-in functions to calculate it:
+// If we want to know the length of the strings taken up by bytes, we can use Go+'s built-in
+// functions to calculate it:
 
 println(len("helloword")) // 9
 
 // If we were to define a string, the grammar would be as follows:
 
 str := "helloword"
-println(str) // helloword
+println(str)      // helloword
 println(len(str)) // 9
 
-//We can stitch two strings together by +, appending the later string to the later of the earlier string.
+// We can stitch two strings together by +, appending the later string to the later of the
+// earlier string.
 
 str := "hello" + "word"
 println(str) // helloword
@@ -29,7 +37,9 @@ str2 := "zs"
 
 println(str1 + str2) // my name is      zs
 
-// If we want to define a multi-line string, Go+ supports that too. Using the traditional "" is not possible across lines, we can use backquotes if we want to define a multi-line string: `
+// If we want to define a multi-line string, Go+ supports that too. Using the traditional
+// "" is not possible across lines, we can use backquotes if we want to define a multi-line
+// string: `
 
 const str = `First line
 Second line
@@ -37,5 +47,5 @@ Third line
 `
 println(str)
 
-//The code between the backquotes is not recognized by the editor, but only as part of the string.
- 
+// The code between the backquotes is not recognized by the editor, but only as part of
+// the string.
