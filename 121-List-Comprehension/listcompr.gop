@@ -1,0 +1,23 @@
+// Generating list of odd and even numbers.
+odds := [x for x <- 1:10:2]
+evens := [x for x <- 2:10:2]
+println "odds:", odds
+println "evens:", evens
+
+// Squares
+squares := [[x, x*x] for x <- 0:10]
+println "squares:", squares
+
+// Iterations
+iterated := [[[y, [x, x*x, x+y]] for y <- 0:10] for x <- 0:10]
+println "Tracking iterations:", iterated
+
+// Split a string
+str := "goplus/tutorials"
+println [x for x <- str.split("")]
+
+// Split a string on given character
+SplitOn := func(ch, str string) []string {
+	return [x for x <- str.split(ch)]
+}
+println SplitOn("t", "goplus/tutorials")
