@@ -1,8 +1,15 @@
 # Declaration of multidimensional arrays
 
-// You can declare a matrix with 2 rows and 2 columns like this
-var matrix [2][2]int
-println matrix
+// Array types are one-dimensional, but you can
+// compose types to build multi-dimensional data
+// structures.
+var twoD [2][3]int
+for i := 0; i < 2; i++ {
+	for j := 0; j < 3; j++ {
+		twoD[i][j] = i + j
+	}
+}
+println "2d: ", twoD
 
 // If you need to declare more dimensions, you can extend them yourself, such as declaring a 2*2*3 three-dimensional array
 var threeDimensionalArray [2][2][3]int
