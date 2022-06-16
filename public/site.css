@@ -67,6 +67,11 @@ body {
     position: relative;
     margin: 0 auto;
 }
+@media screen and (min-width: 641px) {
+    .main {
+        margin-bottom: 76px;
+    }
+}
 @media screen and (max-width: 640px) {
     .main {
         width: 100%;
@@ -136,8 +141,8 @@ body {
     margin: 28px 0 40px;
 }
 .text-wrapper h3 {
-    font-size: 20px;
-    line-height: 1.4;
+    font-size: 24px;
+    line-height: 1.5;
     margin: 28px 0 24px;
 }
 .text-wrapper h4 {
@@ -162,30 +167,22 @@ body {
     list-style: decimal;
 }
 .text-wrapper li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+}
+.text-wrapper li::marker {
+    color: #999;
 }
 
 /* example link list in home page */
 @media screen and (min-width: 641px) {
+    h3.example-link-title {
+        margin-top: 56px;
+    }
+    .example-link-list + h3.example-link-title {
+        margin-top: 44px;
+    }
     .text-wrapper .example-link-list {
-        display: grid;
-        gap: 24px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        list-style: none;
-        padding: 0;
-    }
-    .text-wrapper a.example-link {
-        display: flex;
-        align-items: center;
-        padding: 9px 16px;
-        min-height: 70px;
-        color: #000;
-        background-color: #F5F5F5;
-        transition: all .3s;
-    }
-    .text-wrapper a.example-link:hover {
-        text-decoration: none;
-        background-color: #EEE;
+        column-count: 2;
     }
 }
 .text-wrapper pre, .text-wrapper code {

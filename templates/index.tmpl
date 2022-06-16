@@ -28,7 +28,7 @@
           browse the full list below.
         </p>
         {{range .}}
-          {{if .Title}}<h3>{{.Title}}</h3>{{end}}
+          {{if .Title}}<h3 class="example-link-title">{{.Title}}</h3>{{end}}
           <ul class="example-link-list">
             {{range .Articles}}
               <li><a class="example-link" href="{{.Path}}">{{.Title}}</a></li>
