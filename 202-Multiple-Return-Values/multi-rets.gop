@@ -1,0 +1,11 @@
+// _Multiple-Return-Value_ are central in Go+. We'll learn about
+// multiple return value with a few different examples.
+
+// 定义一个方法，返回值是一个字符串和一个整型值
+func nameAndAge() (string, int) {
+	// 同时返回姓名和年龄
+	return "Tom", 12
+}
+
+name, age := nameAndAge()
+println "姓名：" + name + ", 年龄：" + age.string()
