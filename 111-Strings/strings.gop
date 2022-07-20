@@ -29,23 +29,23 @@ println(len(str)) // 9
 // We can stitch two strings together by +, appending the later string to the later of the
 // earlier string.
 
-str := "hello" + "word"
-println(str) // helloword
+str1 := "hello" + "word"
+println(str1) // helloword
 
-str1 := "my name is \t"
-str2 := "zs"
+str2 := "my name is \t"
+str3 := "zs"
 
-println(str1 + str2) // my name is      zs
+println(str2 + str3) // my name is      zs
 
 // If we want to define a multi-line string, Go+ supports that too. Using the traditional
 // "" is not possible across lines, we can use backquotes if we want to define a multi-line
 // string: `
 
-const str = `First line
+const str4 = `First line
 Second line
 Third line
 `
-println(str)
+println(str4)
 
 // The code between the backquotes is not recognized by the editor, but only as part of
 // the string.
