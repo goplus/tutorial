@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -79,7 +78,7 @@ var (
 )
 
 func listTutorial(dir string) (names []string, err error) {
-	fis, err := ioutil.ReadDir(dir)
+	fis, err := os.ReadDir(dir)
 	if err != nil {
 		return
 	}
@@ -299,7 +298,7 @@ func langOf(fname string) string {
 }
 
 func parseExample(dir string, idx *exampleIndex) *example {
-	fis, err := ioutil.ReadDir(dir)
+	fis, err := os.ReadDir(dir)
 	check(err)
 	example := &example{exampleIndex: idx}
 	for _, fi := range fis {
