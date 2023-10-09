@@ -1,27 +1,29 @@
-// First, we define a very simple interface on geometry, containing the two most basic 
+import "math"
+
+// First, we define a very simple interface on geometry, containing the two most basic
 // interface methods - calculating the area and calculating the perimeter - with the following code:
 type geometry interface {
-    area() float64
-    perim() float64
+	area() float64
+	perim() float64
 }
 
 // Next, we define two structs, a rectangular struct and a circular Rectangular
 // struct, with the following code:
 type rect struct {
-    width float64
-    height float64
+	width  float64
+	height float64
 }
 
 type circle struct {
-    radius float64
+	radius float64
 }
 
-// Then implement the interface methods defined above respectively, and the code 
+// Then implement the interface methods defined above respectively, and the code
 // related to the rectangular structure is as follows:
 func (c circle) area() float64 {
-    return math.Pi * c.radius * c.radius
+	return math.Pi * c.radius * c.radius
 }
 
 func (c circle) perim() float64 {
-    return 2 * math.Pi * c.radius
+	return 2 * math.Pi * c.radius
 }
