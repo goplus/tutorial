@@ -8,7 +8,7 @@ type geometry interface {
 // Next, we define two structs, a rectangular struct and a circular Rectangular
 // struct, with the following code:
 type rect struct {
-    width float64, 
+    width float64
     height float64
 }
 
