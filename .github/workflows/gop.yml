@@ -1,4 +1,4 @@
-# This workflow will build a golang project
+# This workflow will build a goplus project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
 
 name: Go+
@@ -20,7 +20,7 @@ jobs:
       uses: goplus/setup-goplus@v1
       with:
         go-version: "1.18"
-        gop-version: "1.1.7"
+        gop-version: "1.1.8"
 
     - name: Build
       run: |
