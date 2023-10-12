@@ -4,6 +4,7 @@
 
 // `var` declares 1 or more variables.
 var a = "initial"
+
 println a
 
 // You can declare multiple variables at once.
