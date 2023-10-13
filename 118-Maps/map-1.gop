@@ -1,4 +1,4 @@
-# Map literals in Go+ style
+# Map literals in Go style
 
 // map[string]int
 println {"Hello": 1, "xsw": 3}
