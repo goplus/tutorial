@@ -1,1 +1,18 @@
+//Functions are values too. They can be passed around just like other values.
+//Function values may be used as function arguments and return values.
 
+import (
+	"math"
+)
+
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+hypot := func(x, y float64) float64 {
+	return math.sqrt(x*x + y*y)
+}
+println hypot(5, 12)
+
+println compute(hypot)
+println compute(math.Pow)
