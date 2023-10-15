@@ -1,4 +1,4 @@
-//The Go programming language supports recursion. That is, it allows a function to call itself. But while using recursion, programmers need to be careful to define an exit condition from the function, otherwise it will go on to become an infinite loop.
+//The Go+ programming language supports recursion. That is, it allows a function to call itself. But while using recursion, programmers need to be careful to define an exit condition from the function, otherwise it will go on to become an infinite loop.
 //Recursive functions are very useful to solve many mathematical problems such as calculating factorial of a number, generating a Fibonacci series, etc.
 
 
