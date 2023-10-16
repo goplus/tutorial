@@ -1,1 +1,16 @@
+import "strings"
 
+func joinstr(elements ...string) string {
+	return strings.join(elements, "-")
+}
+
+elements := []string{"geeks", "FOR", "geeks"}
+println joinstr("one")
+println joinstr("one", "two")
+println joinstr("one", "two", "three")
+println joinstr(elements...)
+
+//joinstr function that is called with the varying number of arguments is known as variadic function.
+//In the declaration of the joinstr function, the type of the last parameter is preceded by an ellipsis, i.e, (…).
+//It indicates that the function can be called at any number of parameters of string.
+//The call joinstr(elements...), if without that ..., it wouldn't compile because the types would be wrong; elements is not of type string.
