@@ -1,0 +1,29 @@
+# Panic
+// Panic is a built-in function that stops the normal execution flow. When you call panic in your code, it means you’ve decided that your caller can’t solve the problem. Therefore, you should use panic only in rare cases where it’s not safe for your code or anyone integrating your code to continue at that point.
+// The code sample below demonstrates how panic works:
+
+import (
+        "errors"
+)
+
+func A() {
+        defer println("Then we can't save the earth!")
+        B()
+}
+func B() {
+        defer println("And if it keeps getting hotter...")
+        C()
+}
+func C() {
+        defer println("Turn on the air conditioner...")
+        Break()
+}
+func Break() {
+        defer println("If it's more than 30 degrees...")
+        panic(errors.New("Global Warming!!!"))
+        println("Goodbye!")
+}
+
+A()
+
+// As shown above, when panic is used and not handled, the execution flow stops, all deferred functions are executed in reverse order, and stack traces are printed.
