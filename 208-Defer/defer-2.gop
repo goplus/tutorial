@@ -1,0 +1,10 @@
+# Stacking defers
+
+// Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order.
+// Defer is commonly used to simplify functions that perform various clean-up actions.
+
+println("counting")
+for i := 0; i < 10; i++ {
+  defer println(i)
+}
+println("done")
