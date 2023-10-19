@@ -1,0 +1,34 @@
+# Embedding can also be a simple convenience. 
+// This example shows an embedded field alongside a regular, named field.
+
+import "log"
+import "fmt"
+import "os"
+
+type Job struct {
+    Command string
+    *log.Logger
+}
+
+func (job *Job) Printf(format string, args ...interface{}) {
+    job.Logger.Printf("%q: %s", job.Command, fmt.Sprintf(format, args...))
+}
+
+func NewJob(command string, logger *log.Logger) *Job {
+    return &Job{command, logger}
+}
+
+job := &Job{"cmd", log.New(os.Stderr, "Job: ", log.Ldate)}
+job.Println("starting now...")
+job.Printf("format string %d", 1)
+
+// The Job type now has the Print, Printf, Println and other methods of *log.Logger. We could have given the Logger a field name, of course, but it's not necessary to do so. And now, once initialized, we can log to the Job: job.Println("starting now...")
+
+// The Logger is a regular field of the Job struct, so we can initialize it in the usual way inside the constructor for Job, like function NewJob do, or with a composite literal, job := &Job{command, log.New(os.Stderr, "Job: ", log.Ldate)}
+
+// If we need to refer to an embedded field directly, the type name of the field, ignoring the package qualifier, serves as a field name, as it did in the Printf method of our Job struct. Here, if we needed to access the *log.Logger of a Job variable job, we would write job.Logger, which would be useful if we wanted to refine the methods of Logger.
+
+// Embedding types introduces the problem of name conflicts but the rules to resolve them are simple. First, a field or method X hides any other item X in a more deeply nested part of the type. If log.Logger contained a field or method called Command, the Command field of Job would dominate it.
+
+// Second, if the same name appears at the same nesting level, it is usually an error; it would be erroneous to embed log.Logger if the Job struct contained another field or method called Logger. However, if the duplicate name is never mentioned in the program outside the type definition, it is OK. This qualification provides some protection against changes made to types embedded from outside; there is no problem if a field is added that conflicts with another field in another subtype if neither field is ever used.
+
