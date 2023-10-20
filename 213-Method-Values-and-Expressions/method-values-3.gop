@@ -8,7 +8,7 @@ type Point struct {
 
 func (p *Point)Add(another Point) {
 	p.x += another.x
-  	p.y += another.y
+  p.y += another.y
 }
 
 func (p *Point) String() string {
