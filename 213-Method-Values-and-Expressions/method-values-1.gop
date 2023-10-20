@@ -1,0 +1,19 @@
+
+# Method value
+
+// Method values allow you to bind a method to a specific object, and then call the method as an ordinary function with the object implied, in a kind of closure. For example:
+
+type Hello struct {
+}
+
+func (hello *Hello) Say() {
+	println "Hello"
+}
+
+hello := &Hello{}
+
+hello.Say
+
+printf("%T", hello.Say)
+
+// The expression hello.Say creates a method value, binding the Say function to the specific variable hello, giving it a type of func(). So function values can be passed as function parameters

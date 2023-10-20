@@ -1,0 +1,24 @@
+
+// But if the method has a pointer receiver, you need to write (*Type).Method in your method expression. For example:
+
+type Point struct {
+	x float64
+	y float64
+}
+
+func (p *Point)Add(another Point) {
+	p.x += another.x
+  p.y += another.y
+}
+
+func (p *Point) String() string {
+	return sprintf("x: %.1f, y: %.1f", p.x, p.y)
+}
+
+p := &Point{20, 10}
+another := Point{30, 40}
+
+p.Add(another)
+(*Point).Add(p, another)
+
+println p
