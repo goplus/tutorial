@@ -1,0 +1,25 @@
+
+# Method expressions
+
+// Method expressions let you transform a method into a function with the receiver as its first argument. For example:
+
+type Point struct {
+	x float64
+	y float64
+}
+
+func (p Point) Add(another Point) Point {
+	return Point{p.x+another.x, p.y+another.y}
+}
+
+func (p Point) String() string {
+	return sprintf("x: %.1f, y: %.1f", p.x, p.y)
+}
+
+p := Point{20, 10}
+another := Point{30, 40}
+
+println p.Add(another)
+println Point.Add(p, another)
+
+// So if you defined a Point struct and a method func (p Point) Add(another Point), you could write Point.Add to get a func(p Point, another Point).
