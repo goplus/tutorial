@@ -1,0 +1,6 @@
+
+// If we want the lambda to be defined and executed, we omit its identifier and add an argument list in parentheses after the body’s closing curly brace. For example: 
+
+func(msg string) {
+	println msg
+}("Hello")
