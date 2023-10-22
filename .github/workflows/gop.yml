@@ -20,6 +20,6 @@ jobs:
         go-version: "1.18"
         gop-version: "1.1.8"
 
-    - name: Build
+    - name: SingleFile Mode Test
       run: |
         gop go -t -s ./...
