@@ -1,0 +1,18 @@
+# 2. Export structure method
+
+package person
+
+type Person struct {
+	age  int
+	name string
+}
+
+func (person *Person) GetAge() int {
+	return person.age
+}
+
+func (person *Person) getName() string {
+	return person.name
+}
+
+// The Person struct's method GetAge() is exported and getName is not exported.
