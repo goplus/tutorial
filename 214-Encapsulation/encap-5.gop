@@ -1,0 +1,26 @@
+
+# Export function
+
+package MathTools
+
+func Sum(nums ...int) int {
+	var s int = 0
+	for _, num := range nums {
+		s += num
+	}
+	return s
+}
+
+func average(nums ...int) int {
+	if len(nums) <= 0 {
+		return 0
+	}
+	return Sum(nums...) / len(nums)
+}
+
+println Sum(1, 2, 3), average(1, 2, 3)
+
+println Sum(1, 2, 3)
+
+// The function Sum is exported, and the function average is not exported.
+

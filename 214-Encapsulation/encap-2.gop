@@ -1,0 +1,15 @@
+# Export Struct, for example:
+
+package company
+
+type PublicCompany struct {
+	Name    string
+	address string
+}
+
+type privateCompany struct {
+	name    string
+	address string
+}
+
+// Here, in company package, the struct PublicCompany is exported, struct privateCompany is non-exported.

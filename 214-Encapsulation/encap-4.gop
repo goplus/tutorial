@@ -1,0 +1,11 @@
+
+# Export structure field
+
+package student
+
+type Student struct {
+	Name string
+	age int
+}
+
+// The Student struct field Name is exported. The Student struct field age is not exported.
