@@ -1,0 +1,27 @@
+// Other properties are restricted to certain types of artifacts. Properties of the printed word are
+// relevant only to books and magazines, where as only movies and TV episodes have a screen
+// resolution.
+
+import (
+	"io"
+	"time"
+)
+
+type Text interface {
+	Pages() int
+	Words() int
+	PageSize() int
+}
+
+type Audio interface {
+	Stream() (io.ReadCloser, error)
+	RunningTime() time.Duration
+	Format() string // e.g., "MP3", "WAV"
+}
+
+type Video interface {
+	Stream() (io.ReadCloser, error)
+	RunningTime() time.Duration
+	Format() string // e.g., "MP4", "WMV"
+	Resolution() (x, y int)
+}

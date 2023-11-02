@@ -1,0 +1,32 @@
+
+// In go+, interfaces do not need to be explicitly implemented – i.e. no implement keyword. Instead, interfaces are satisfied implicitly.
+
+// A type satisfies an interface if it possesses all the methods the interface requires. For example,
+// an *os.File satisfies io.Reader, io.Writer, io.Closer, and io.ReadWriter. A *bytes.Buffer satisfies io.Reader, io.Writer, and io.ReadWriter, but does not satisfy io.Closer because it does not have a
+// Close method.
+
+// The assignability rule for interfaces is very simple: an expression may be assigned to
+// an interface only if its type satisfies the interface. This rule applies even when the right-hand side is itself an interface. For example:
+
+import (
+	"bytes"
+	"io"
+	"os"
+	"time"
+)
+
+var w io.Writer
+
+w = os.Stdout         // OK: *os.File has Write method
+w = new(bytes.Buffer) // OK: *bytes.Buffer has Write method
+w = time.Second       // compile error: time.Duration lacks Write method
+
+var rwc io.ReadWriteCloser
+rwc = os.Stdout         // OK: *os.File has Read, Write, Close methods
+rwc = new(bytes.Buffer) // compile error: *bytes.Buffer lacks Close method
+
+w = rwc // OK: io.ReadWriteCloser interface has Write method
+rwc = w // compile error: io.Writer interface lacks Close method
+
+// Because io.ReadWriter and io.ReadWriteCloser include all the methods of io.Writer, any type that
+// satisfies io.ReadWriter or io.ReadWriteCloser necessarily satisfies io.Writer.

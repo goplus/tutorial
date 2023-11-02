@@ -1,0 +1,21 @@
+// These interfaces are but one useful way to group related concrete types together and express
+// the facets they share in common. We may discover other groupings later. For example, if we
+// find we need to handle Audio and Video items in the same way, we can define a Streamer
+// interface to represent their common asects without changing any existing type declarations.
+
+import (
+	"io"
+	"time"
+)
+
+type Streamer interface {
+	Stream() (io.ReadCloser, error)
+	RunningTime() time.Duration
+	Format() string
+}
+
+// Each grouping of concrete types based on their shared behaviors can be expressed as an interface type. Unlike class-based languages, in which the set of interfaces satisfied by a class is
+// explicit, in Go we can define new abstractions or groupings of interest when we need them,
+// without modifying the declaration of the concrete type. This is particularly useful when the
+// concrete type comes from a package written by a different author. Of course, there do need to
+// be underlying commonalities in the concrete types.
