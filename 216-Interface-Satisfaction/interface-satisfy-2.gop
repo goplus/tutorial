@@ -1,0 +1,15 @@
+// Like an envelope that wraps and conceals the letter it holds, an interface wraps and conceals
+// the concrete type and value that it holds. Only the methods revealed by the interface type may
+// be called, even if the concrete type has others. For example:
+
+import (
+	"io"
+	"os"
+)
+
+os.Stdout.Write([]byte("hello")) // OK: *os.File has Write method
+os.Stdout.Close()                // OK: *os.File has Close method
+var w io.Writer
+w = os.Stdout
+w.Write([]byte("hello")) // OK: io.Writer has Write method
+w.Close()                // compile error: io.Writer lacks Close method

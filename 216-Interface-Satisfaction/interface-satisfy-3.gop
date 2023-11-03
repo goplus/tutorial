@@ -1,0 +1,11 @@
+// A concrete type may satisfy many unrelated interfaces. Consider a program that organizes or
+// sells digitized cultural artifacts like music, films, and books. It might define the following set
+// of concrete types:
+
+//		Album
+//		Book
+//		Movie
+//		Magazine
+//		Podcast
+//		TVEpisode
+//		Track

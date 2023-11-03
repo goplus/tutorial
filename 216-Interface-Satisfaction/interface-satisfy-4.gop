@@ -1,0 +1,10 @@
+// We can express each abstraction of interest as an interface. Some properties are common to all
+// artifacts, such as a title, a creation date, and a list of creators (author s or artists).
+
+import "time"
+
+type Artifact interface {
+	Title() string
+	Creators() []string
+	Created() time.Time
+}
