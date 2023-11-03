@@ -1,5 +1,5 @@
 // A defer statement defers the execution of a function until the surrounding function returns.
-// The deferred call's arguments are evaluated immediately, 
+// The deferred call's arguments are evaluated immediately,
 // but the function call is not executed until the surrounding function returns.
 // Defer is commonly used to simplify functions that perform various clean-up actions.
 
@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 )
+
 func CopyFile(dstName, srcName string) (written int64, err error) {
 	src, err := os.open(srcName)
 	if err != nil {
@@ -24,4 +25,3 @@ func CopyFile(dstName, srcName string) (written int64, err error) {
 }
 
 // Defer statements allow us to think about closing each file right after opening it, guaranteeing that, regardless of the number of return statements in the function, the files will be closed.
-

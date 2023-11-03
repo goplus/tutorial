@@ -3,30 +3,30 @@
 // To report an error as a return value, you have to call the recover function in the same goroutine as where the panic function is called, retrieve an error struct from the recover function, and pass it to a variable:
 
 import (
-        "errors"
+	"errors"
 )
 
 func saveEarth() (err error) {
 
-        defer func() {
-                if r := recover(); r != nil {
-                        err = r.(error)
-                }
-        }()
-        TooLate()
-        return
+	defer func() {
+		if r := recover(); r != nil {
+			err = r.(error)
+		}
+	}()
+	TooLate()
+	return
 }
 
 func TooLate() {
-        A()
-        panic(errors.New("Then there's nothing we can do"))
+	A()
+	panic(errors.New("Then there's nothing we can do"))
 }
 
 func A() {
-        defer println("If it's more than 100 degrees...")
+	defer println("If it's more than 100 degrees...")
 }
 
 err := saveEarth()
 println(err)
 
-// Every deferred function will be executed after a function call but before a return statement. Therefore, you can set a returned variable before a return statement is executed. 
+// Every deferred function will be executed after a function call but before a return statement. Therefore, you can set a returned variable before a return statement is executed.
