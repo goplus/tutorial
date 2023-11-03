@@ -23,3 +23,7 @@ jobs:
     - name: SingleFile Mode Test
       run: |
         gop go -ignore-notated-error -t -s ./...
+
+    - name: Go+ Format Test
+      run: |
+        gop fmt -t ./...

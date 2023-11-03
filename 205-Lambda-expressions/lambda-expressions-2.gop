@@ -1,4 +1,3 @@
-
 // If we want a lambda to be defined without being executed, we only omit its identifier. For example:
 
 func returnLambda() func(string) {

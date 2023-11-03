@@ -4,6 +4,6 @@
 
 println("counting")
 for i := 0; i < 10; i++ {
-  defer println(i)
+	defer println(i)
 }
 println("done")

@@ -4,7 +4,7 @@ package vars
 
 var (
 	PersonName = "Wang yang"
-	personAge = 21
+	personAge  = 21
 )
 
 // The variable PersonName is exported, and the variable personAge is not exported.

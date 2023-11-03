@@ -3,25 +3,28 @@
 // The code sample below demonstrates how panic works:
 
 import (
-        "errors"
+	"errors"
 )
 
 func A() {
-        defer println("Then we can't save the earth!")
-        B()
+	defer println("Then we can't save the earth!")
+	B()
 }
+
 func B() {
-        defer println("And if it keeps getting hotter...")
-        C()
+	defer println("And if it keeps getting hotter...")
+	C()
 }
+
 func C() {
-        defer println("Turn on the air conditioner...")
-        Break()
+	defer println("Turn on the air conditioner...")
+	Break()
 }
+
 func Break() {
-        defer println("If it's more than 30 degrees...")
-        panic(errors.New("Global Warming!!!"))
-        println("Goodbye!")
+	defer println("If it's more than 30 degrees...")
+	panic(errors.New("Global Warming!!!"))
+	println("Goodbye!")
 }
 
 A()

@@ -1,4 +1,3 @@
-
 // In Go+, interfaces do not need to be explicitly implemented – i.e. no implement keyword. Instead, interfaces are satisfied implicitly.
 
 // A type satisfies an interface if it possesses all the methods the interface requires. For example,

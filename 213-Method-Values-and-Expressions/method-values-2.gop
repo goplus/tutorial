@@ -1,4 +1,3 @@
-
 # Method expressions
 
 // Method expressions let you transform a method into a function with the receiver as its first argument. For example:
@@ -9,7 +8,7 @@ type Point struct {
 }
 
 func (p Point) Add(another Point) Point {
-	return Point{p.x+another.x, p.y+another.y}
+	return Point{p.x + another.x, p.y + another.y}
 }
 
 func (p Point) String() string {

@@ -16,7 +16,7 @@ func (hello *Hello) Say() {
 }
 
 func (hello *Hello) Sleep() {
-  println "Hello ", hello.name, "go to bed!"
+	println "Hello ", hello.name, "go to bed!"
 }
 
 type Goodbye struct {
@@ -30,30 +30,30 @@ func (goodbye *Goodbye) Say() {
 type Forward struct {
 }
 
-func (forward *Forward)Say() {
-  forward.SayForward()
+func (forward *Forward) Say() {
+	forward.SayForward()
 }
 
 func (forward *Forward) SayForward() {
-  println "You must forward method!"
+	println "You must forward method!"
 }
 
 type HelloGoodbye struct {
 	*Hello
 	*Goodbye
-  forward *Forward
+	forward *Forward
 }
 
 func (hg *HelloGoodbye) Say() {
 	hg.Hello.Say()
 	hg.Goodbye.Say()
-  hg.forward.Say()
+	hg.forward.Say()
 }
 
 helloGoodbye := HelloGoodbye{
 	&Hello{"tsingbx"},
 	&Goodbye{"tsingbx"},
-  &Forward{},
+	&Forward{},
 }
 helloGoodbye.Say()
 println()
@@ -66,7 +66,3 @@ helloGoodbye.forward.SayForward()
 // The HelloGoodbye struct also have forward member written as forward *Forward, but then to promote the methods of the forward and to satisfy the Talk interface, we would also need to provide forwarding methods, like this: hg.forward.Say(). By embedding the structs directly, we avoid this bookkeeping. The methods of embedded types come along for free, which means that HelloGoodbye struct also has the methods of Hello struct and Goodbye struct.
 
 // There's an important way in which embedding differs from subclassing. When we embed a type, the methods of that type become methods of the outer type, but when they are invoked the receiver of the method is the inner type, not the outer one. In our example, when the Sleep method of a HelloGoodbye is invoked, it has exactly the same effect as the forwarding method helloGoodbye.Hello.Sleep(); the receiver is the helloGoodbye.Hello, not the helloGoodbye itself.
-
-
-
-

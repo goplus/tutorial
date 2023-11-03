@@ -1,4 +1,3 @@
-
 # 4. Export function
 
 package MathTools
@@ -23,4 +22,3 @@ println Sum(1, 2, 3), average(1, 2, 3)
 println Sum(1, 2, 3)
 
 // The function Sum is exported, and the function average is not exported.
-

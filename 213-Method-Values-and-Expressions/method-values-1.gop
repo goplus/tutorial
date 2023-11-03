@@ -1,4 +1,3 @@
-
 # Method value
 
 // Method values allow you to bind a method to a specific object, and then call the method as an ordinary function with the object implied, in a kind of closure. For example:
