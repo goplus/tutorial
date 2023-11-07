@@ -8,22 +8,28 @@
 // The zero value for an interface has both its type and value components set to nil, for example:
 
 import (
-	"bufio"
+	"bytes"
 	"io"
 	"os"
 )
 
 var w io.Writer
 
+println w == nil
+
 var w2 io.Writer = os.Stdout
 
 w2 = nil // same as w, both w and w2 interface variable has zero value
 
-var w3 = bufio.NewWriter(os.Stdout)
+println w2 == nil
 
-var w4 io.Writer = w3 // w4 has non-zero interface value. Its dynamic type is *bytes.Buffer and its dynamic value is nil. So the result of w4 == nil is false
+var r *bytes.Reader
 
-println(w == nil, w2 == nil, w3 == nil, w4 == nil)
+println r == nil
+
+var r2 io.Reader = r // r2 has non-zero interface value. Its dynamic type is *bytes.Reader and its dynamic value is nil. So the result of r2 == nil is false
+
+println r2 == nil
 
 // The interface variable w has zero value. So both its dynamic type and its dynamic value are nil. In this case, the result of if w == nil is true.
-// The interface variable w4 has non-zero value. Its dynamic type is *bytes.Buffer and its dynamic value is nil. So the result of w4 == nil is false.
+// The interface variable r2 has non-zero value. Its dynamic type is *bytes.Reader and its dynamic value is nil. So the result of r2 == nil is false.
