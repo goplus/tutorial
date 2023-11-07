@@ -6,9 +6,10 @@
 // However, if two interface values are compared and have the same dynamic type, but that type
 // is not comparable (a slice, for instance), then the comparison fails with a panic. For example
 
-var x any = [1, 2, 3]
+var x = []any{1, 2, 3}
+var y = []any{1, 2, 3}
 
-println x == x // panic: comparing uncomparable type []int
+println(x == y) // panic: comparing uncomparable type []int
 
 // In this respect, interface types are unusual. Other types are either safely comparable (like
 // basic types and pointers) or not comparable at all (like slices, maps, and functions), but when
