@@ -29,7 +29,10 @@ println r == nil
 
 var r2 io.Reader = r // r2 has non-zero interface value. Its dynamic type is *bytes.Reader and its dynamic value is nil. So the result of r2 == nil is false
 
-println r2 == nil
+if r2 != nil {
+	slice := []byte{}
+	r2.Read(slice) // panic: runtime error: invalid memory address or nil pointer dereference
+}
 
 // The interface variable w has zero value. So both its dynamic type and its dynamic value are nil. In this case, the result of if w == nil is true.
 // The interface variable r2 has non-zero value. Its dynamic type is *bytes.Reader and its dynamic value is nil. So the result of r2 == nil is false.
