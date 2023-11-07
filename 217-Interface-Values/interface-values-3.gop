@@ -1,0 +1,21 @@
+// When handling errors, or during debugging, it is often helpful to report the dynamic type of
+// an interface value. For that, we use the fmt package’s %T verb:
+
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"os"
+)
+
+var w io.Writer
+
+fmt.printf "%T\n", w // "<nil>"
+
+w = os.Stdout
+fmt.printf "%T\n", w // "*os.File"
+
+w = new(bytes.Buffer)
+fmt.printf "%T\n", w // "*bytes.Buffer"
+
+// Internally, fmt uses reflection to obtain the name of the int erface’s dynamic type.
