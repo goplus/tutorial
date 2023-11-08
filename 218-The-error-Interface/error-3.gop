@@ -1,0 +1,8 @@
+// We would not want a distinguished error such as io.EOF to compare equal to one that merely happened to have the same message.
+
+import (
+	"errors"
+	"fmt"
+)
+
+fmt.Println(errors.New("EOF") == errors.New("EOF")) // "false"
