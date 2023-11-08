@@ -10,12 +10,12 @@ import (
 
 var w io.Writer
 
-fmt.printf "%T\n", w // "<nil>"
+fmt.printf("%T\n", w) // "<nil>"
 
 w = os.Stdout
-fmt.printf "%T\n", w // "*os.File"
+fmt.printf("%T\n", w) // "*os.File"
 
 w = new(bytes.Buffer)
-fmt.printf "%T\n", w // "*bytes.Buffer"
+fmt.printf("%T\n", w) // "*bytes.Buffer"
 
 // Internally, fmt uses reflection to obtain the name of the int erface’s dynamic type.
