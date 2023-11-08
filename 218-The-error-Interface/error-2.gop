@@ -1,0 +1,20 @@
+// The simplest way to create an error is by calling errors.New, which returns a new error for
+// a given error message. The entire errors package is only four lines long:
+
+package errors
+
+func New(text string) error {
+	return &errorString{text}
+}
+
+type errorString struct {
+	text string
+}
+
+func (e *errorString) Error() string {
+	return e.text
+}
+
+// The underlying type of errorString is a struct, not a string , to protect its representation from
+// inadvertent (or premeditated) updates. And the reason that the pointer type *errorString,
+// not errorString alone, satisfies the error interface is so that every call to New allocates a distinct error instance that is equal to no other.

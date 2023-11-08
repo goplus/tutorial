@@ -1,0 +1,10 @@
+// Calls to errors.New are relatively infrequent because there’s a convenient wrapper function,
+// fmt.Errorf, that does string formatting too.
+
+package fmt
+
+import "errors"
+
+func Errorf(format string, args ...interface{}) error {
+	return errors.New(Sprintf(format, args...))
+}

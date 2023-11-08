@@ -1,0 +1,5 @@
+// error interface has a single method that returns an error message:
+
+type error interface {
+	Error() string
+}
