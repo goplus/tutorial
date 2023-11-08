@@ -5,6 +5,10 @@ package fmt
 
 import "errors"
 
+func Sprintf(format string, args ...interface{}) (s string) {
+	//...
+}
+
 func Errorf(format string, args ...interface{}) error {
 	return errors.New(Sprintf(format, args...))
 }
