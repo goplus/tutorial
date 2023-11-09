@@ -9,7 +9,6 @@
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"os"
 )
@@ -19,4 +18,4 @@ var w io.Writer
 w = os.Stdout
 f := w.(*os.File)      // success: f == os.Stdout
 c := w.(*bytes.Buffer) // panic: interface conversion: io.Writer is *os.File, not *bytes.Buffer
-fmt.Printf("f: %T, c: %T", f, c)
+printf "f: %T, c: %T", f, c
