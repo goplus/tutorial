@@ -1,0 +1,16 @@
+// No matter what type was asserted, if the operand is a nil interface value, the type assertion
+// fails. A type assertion to a less restrictive interface type (one with fewer methods) is rarely
+// needed, as it behaves just like an assignment, except in the nil case.
+
+import (
+	"io"
+	"os"
+)
+
+var w io.Writer
+var rw io.ReadWriter = os.Stdout
+
+w = rw             // io.ReadWriter is assignable to io.Writer
+w = rw.(io.Writer) // fails only if rw == nil
+
+printf "w: %T\nrw: %T", w, rw

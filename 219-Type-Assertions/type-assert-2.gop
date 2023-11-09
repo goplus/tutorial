@@ -1,0 +1,29 @@
+// Second, if instead the asserted type T is an interface type, then the type assertion checks
+// whether x’s dynamic type satisfies T. If this check succeeds, the dynamic value is not extracted;
+// the result is still an interface value with the same type and value components, but the result
+// has the interface type T. In other words, a type assertion to an interface type changes the type
+// of the expression, making a different (and usually larger) set of methods accessible, but it
+// preserves the dynamic type and value components inside the interface value.
+
+import (
+	"io"
+	"os"
+)
+
+type ByteCounter struct {
+}
+
+func (b *ByteCounter) Write(bytes []byte) (n int, err error) {
+	n = 0
+	err = nil
+	return
+}
+
+var w io.Writer
+
+w = os.Stdout
+rw := w.(io.ReadWriter) // success: *os.File has both Read and Write
+w = new(ByteCounter)
+rw = w.(io.ReadWriter) // panic: *ByteCounter has no Read method
+
+printf "rw: %T\n", rw

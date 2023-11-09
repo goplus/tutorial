@@ -1,0 +1,22 @@
+// Often we’re not sure of the dynamic type of an interface value, and we’d like to test whether it
+// is some particular type. If the type assertion appears in an assignment in which two results are
+// expected, such as the following declarations, the operation does not panic on failure but
+// instead returns an additional second result, a boolean indicating success:
+
+import (
+	"bytes"
+	"io"
+	"os"
+)
+
+var w io.Writer = os.Stdout
+
+f, fok := w.(*os.File)      // success: fok, f == os.Stdout
+b, bok := w.(*bytes.Buffer) // failure: !bok, b == nil
+
+printf "f: %T, fok: %v\n", f, fok // f: *os.File, fok: true
+printf "b: %v, bok: %v", b, bok   // b: <nil>, bok: false
+
+// The second result is conventionally assigned to a variable named ok. If the operation failed,
+// ok is false, and the first result is equal to the zero value of the asserted type, which in this
+// example is a nil *bytes.Buffer.
