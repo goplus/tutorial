@@ -1,4 +1,3 @@
-
 // Second, if instead the asserted type T is an interface type, then the type assertion checks
 // whether x’s dynamic type satisfies T. If this check succeeds, the dynamic value is not extracted;
 // the result is still an interface value with the same type and value components, but the result
