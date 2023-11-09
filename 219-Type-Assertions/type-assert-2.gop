@@ -1,3 +1,4 @@
+
 // Second, if instead the asserted type T is an interface type, then the type assertion checks
 // whether x’s dynamic type satisfies T. If this check succeeds, the dynamic value is not extracted;
 // the result is still an interface value with the same type and value components, but the result
@@ -19,11 +20,11 @@ func (b *ByteCounter) Write(bytes []byte) (n int, err error) {
 	return
 }
 
-var w2 io.Writer
+var w io.Writer
 
-w2 = os.Stdout
-rw2 := w2.(io.ReadWriter) // success: *os.File has both Read and Write
-w2 = new(ByteCounter)
-rw2 = w2.(io.ReadWriter) // panic: *ByteCounter has no Read method
+w = os.Stdout
+rw := w.(io.ReadWriter) // success: *os.File has both Read and Write
+w = new(ByteCounter)
+rw = w.(io.ReadWriter) // panic: *ByteCounter has no Read method
 
-printf "rw2: %T\n", rw2
+printf "rw: %T\n", rw
