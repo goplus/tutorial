@@ -1,0 +1,8 @@
+# = vs :=
+// := is used for declaring and initializing. Multiple variables can be declared and intialized at one line.
+age := 21 // age is declared and initialized to 21
+println age
+
+a, b := 0, 1 // multiple variables can be declared and intialized at one line.
+a, b = b, a
+println a, b // 1, 0
