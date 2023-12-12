@@ -1,1 +1,18 @@
+// int type represents a whole number, which can be positive or negative. The
+// int type size is platform-dependent and will be either 32 or 64 bits. There are
+// also integer types that have a specific size, such as int8, int16, int32, and
+// int64, but the int type should be used unless you need a specific size.
+//
+// uint type represents a positive whole number. The uint type size is platformdependent and will be either 32 or 64 bits. There are also unsigned integer
+// types that have a specific size, such as uint8, uint16, uint32, and uint64, but
+// the uint type should be used unless you need a specific size.
+//
+// int Literal Values
+// Gop values can be expressed literally, where the value is defined directly in the source code file. Common
+// uses for literal values include operands in expressions and arguments to functions, as shown following:
 
+println 20+20
+println 20+30
+
+// int 20, Values can also be expressed in hex (0x14), octal (0o24), and binary notation (0b0010100).
+// unit There are no uint literals. All literal whole numbers are treated as int values.
