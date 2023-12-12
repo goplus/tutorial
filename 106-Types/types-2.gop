@@ -8,7 +8,7 @@
 a := 1r << 200
 b := bigint(1 << 200)
 c := 4/5r
-d := a - (bigint)(1/3r) + (bigint)(3*1/2r)
+d := bigrat(a) - 1/3r + 3*1/2r
 println a, b, c, d
 
 r1 := 1r
