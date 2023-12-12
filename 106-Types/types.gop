@@ -1,17 +1,17 @@
-// Gop's primitive types are
+# Go+ primitive types are
 // <pre>
 // bool
 // int8    int16   int32   int    int64    int128
 // uint8   uint16  uint32  uint   uint64   uint128
-// uintptr // similar to C's size_t
-// byte // alias for uint8
-// rune // alias for int32, represents a Unicode code point
+// uintptr (similar to C's size_t)
+// byte (alias for uint8)
+// rune (alias for int32, represents a Unicode code point)
 // string
 // float32 float64
 // complex64 complex128
 // bigint bigrat
-// unsafe.Pointer // similar to C's void*
-// any // alias for Go's interface{}
+// unsafe.Pointer (similar to C's void*)
+// any (alias for Go's interface{})
 // </pre>
 //
 // The example shows variables of several types, and also that variable declarations may be "factored" into blocks, as with import statements.
