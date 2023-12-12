@@ -7,12 +7,19 @@
 // types that have a specific size, such as uint8, uint16, uint32, and uint64, but
 // the uint type should be used unless you need a specific size.
 //
-// int Literal Values
-// Gop values can be expressed literally, where the value is defined directly in the source code file. Common
-// uses for literal values include operands in expressions and arguments to functions, as shown following:
+// For int 20 values can also be expressed in hex (0x14), octal (0o24), and binary notation (0b0010100).
+// uint, there are no uint literals. All literal whole numbers are treated as int values.
+//
+// Go+ also supports writing numbers with _ as separator:
+
+num := 1_000_000 //Go+ support, same as 1000000
+println num
 
 println 20+20
 println 20+30
+println 0x14      //in hex
+println 0o24      //in octal
+println 0b0010100 // binary
 
-// int 20, Values can also be expressed in hex (0x14), octal (0o24), and binary notation (0b0010100).
-// unit There are no uint literals. All literal whole numbers are treated as int values.
+c := int128(12345) // If you want a different type of integer, you can use casting.
+println c
