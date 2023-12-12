@@ -1,10 +1,10 @@
 // int type represents a whole number, which can be positive or negative. The
 // int type size is platform-dependent and will be either 32 or 64 bits. There are
-// also integer types that have a specific size, such as int8, int16, int32, and
+// also integer types that have a specific size, such as int8, int16, int32, int64, int128, and
 // int64, but the int type should be used unless you need a specific size.
 //
 // uint type represents a positive whole number. The uint type size is platformdependent and will be either 32 or 64 bits. There are also unsigned integer
-// types that have a specific size, such as uint8, uint16, uint32, and uint64, but
+// types that have a specific size, such as uint8, uint16, uint32, uint64, uint128, but
 // the uint type should be used unless you need a specific size.
 //
 // For int 20 values can also be expressed in hex (0x14), octal (0o24), and binary notation (0b0010100).
@@ -23,3 +23,6 @@ println 0b0010100 // binary
 
 c := int128(12345) // If you want a different type of integer, you can use casting.
 println c
+
+u128 := uint128(12345)
+println(u128)
