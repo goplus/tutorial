@@ -1,0 +1,5 @@
+// In go+, you can cast bool to number types.
+
+println int(true)       // 1
+println float64(true)   // 1
+println complex64(true) // (1+0i)
