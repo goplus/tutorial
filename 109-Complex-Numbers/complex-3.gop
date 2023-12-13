@@ -7,9 +7,9 @@ c11 := complex(10, 11) // constructor init
 c22 := 10 + 11i        // complex number init syntax
 
 ccc := complex(2, 3)
-cc2 := 4 + 5i        // complex initializer syntax a + ib
-cc3 := c11 + c22     // addition just like other variables
-println "Add: ", cc3 // prints "Add: (6+8i)"
-re := real(cc3)      // get real part
-im := imag(cc3)      // get imaginary part
-println ccc, re, im  // prints 6 8
+cc2 := 4 + 5i            // complex initializer syntax a + ib
+cc3 := c11 + c22         // addition just like other variables
+println "Add: ", cc3     // prints "Add: (6+8i)"
+re := real(cc3)          // get real part
+im := imag(cc3)          // get imaginary part
+println ccc, cc2, re, im // prints 6 8
