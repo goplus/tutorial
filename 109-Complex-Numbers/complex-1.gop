@@ -1,0 +1,6 @@
+# Parts of a Complex Number
+// There are two parts of a complex number. The real and imaginary part. We use functions to get those.
+
+c := complex(23, 31)
+realPart := real(c) // gets real part
+imagPart := imag(c) // gets imaginary part

@@ -1,0 +1,12 @@
+# Operations on a Complex Number
+// A complex variable can do any operation like addition, subtraction, multiplication, and division.
+// 
+// Let’s see an example to perform mathematical operations on the complex numbers.
+
+c1 := complex(2, 3)
+c2 := 4 + 5i        // complex initializer syntax a + ib
+c3 := c1 + c2       // addition just like other variables
+println "Add: ", c3 // prints "Add: (6+8i)"
+re := real(c3)      // get real part
+im := imag(c3)      // get imaginary part
+println re, im      // prints 6 8
