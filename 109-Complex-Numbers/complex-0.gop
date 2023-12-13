@@ -6,3 +6,4 @@
 
 c1 := complex(10, 11) // constructor init
 c2 := 10 + 11i        // complex number init syntax
+println c1, c2

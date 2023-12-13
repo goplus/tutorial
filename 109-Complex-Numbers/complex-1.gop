@@ -4,3 +4,4 @@
 c := complex(23, 31)
 realPart := real(c) // gets real part
 imagPart := imag(c) // gets imaginary part
+println realPart, imagPart
