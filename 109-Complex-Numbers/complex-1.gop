@@ -1,7 +1,7 @@
-# Parts of a Complex Number
-// There are two parts of a complex number. The real and imaginary part. We use functions to get those.
+# Initializing Complex Numbers
+// There are two complex types in Go+. The complex64 and the complex128.
+// Initializing complex numbers is really easy. You can use the constructor or the initialization syntax as well.
 
-c := complex(23, 31)
-realPart := real(c) // gets real part
-imagPart := imag(c) // gets imaginary part
-println realPart, imagPart
+c1 := complex(10, 11) // constructor init
+c2 := 10 + 11i        // complex number init syntax
+println c1, c2
