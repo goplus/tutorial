@@ -1,6 +1,0 @@
-# Slice literals in Go style
-
-// We can declare and initialize a variable for slice
-// in a single line as well.
-t := []string{"g", "h", "i"}
-println "dcl:", t

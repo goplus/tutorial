@@ -1,0 +1,23 @@
+# Slices of slices
+// Slices can contain any type, including other slices.
+// Create a tic-tac-toe board.
+
+import (
+	"strings"
+)
+
+board := [][]string{
+	[]string{"_", "_", "_"},
+	[]string{"_", "_", "_"},
+	[]string{"_", "_", "_"},
+}
+
+board[0][0] = "X" // The players take turns.
+board[2][2] = "O"
+board[1][2] = "X"
+board[1][0] = "O"
+board[0][2] = "X"
+
+for i := 0; i < len(board); i++ {
+	printf "%s\n", strings.join(board[i], " ")
+}
