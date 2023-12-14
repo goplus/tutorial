@@ -1,1 +1,19 @@
+// There are two floating point types in Go+, float32 and float64
+// Floating point literals have a default type of float64.
+//
+// A floating-point number cannot represent a decimal value exactly. Do not use them to
+// represent money or any other value that must have an exact decimal representation!
+//
+// While you can use == and != to compare floats, don’t do it. Due to the
+// inexact nature of floats, two floating point values might not be equal when you
+// think they should be. Instead, define a minimum allowed variance and see if the
+// difference between two floats is less than that. This minimum value (sometimes
+// called epsilon) depends on what your accuracy needs are;
+//
+// Float literals can also be declared as a power of ten and dividing a float variable set to 0 by 0 returns NaN (Not a Number).
 
+f0 := 42e1   // 420
+f1 := 123e-2 // 1.23
+f2 := 456e+2 // 45600
+f3 := 1.0
+println(f0, f1, f2, f3, f0/0)
