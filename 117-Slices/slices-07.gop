@@ -1,0 +1,12 @@
+# Nil slices
+// The zero value of a slice is nil.
+//
+// A nil slice has a length and capacity of 0 and has no underlying array.
+
+var s []int
+
+println s, len(s), cap(s)
+
+if s == nil {
+	println "nil!"
+}

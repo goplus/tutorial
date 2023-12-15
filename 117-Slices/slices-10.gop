@@ -1,0 +1,27 @@
+# Appending to a slice
+// It is common to append new elements to a slice, and so Go provides a built-in append function. The documentation of the built-in package describes append.
+//
+// func append(s []T, vs ...T) []T
+//
+// The first parameter s of append is a slice of type T, and the rest are T values to append to the slice.
+//
+// The resulting value of append is a slice containing all the elements of the original slice plus the provided values.
+//
+// If the backing array of s is too small to fit all the given values a bigger array will be allocated. The returned slice will point to the newly allocated array.
+
+func printSlice(s []int) {
+	printf "len = %d cap = %d %v\n", len(s), cap(s), s
+}
+
+var s []int
+
+printSlice s
+
+s = append(s, 0) // append works on nil slices.
+printSlice s
+
+s = append(s, 1) // The slice grows as needed.
+printSlice s
+
+s = append(s, 2, 3, 4) // We can add more than one element at a time.
+printSlice s
