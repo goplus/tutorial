@@ -1,6 +1,12 @@
 //
 // The second struct literal style looks like the map literal style:
 
+type person struct {
+	name string
+	age  int
+	pet  string
+}
+
 beth := person{
 	age:  30,
 	name: "Beth",

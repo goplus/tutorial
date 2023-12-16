@@ -1,6 +1,12 @@
-# There are two different styles for a non-empty struct literal. 
+# There are two different styles for a non-empty struct literal.
 // A struct literal can be specified as a comma-separated list of values for the fields
 // inside of braces:
+
+type person struct {
+	name string
+	age  int
+	pet  string
+}
 
 tsb := person{}
 println(tsb)
