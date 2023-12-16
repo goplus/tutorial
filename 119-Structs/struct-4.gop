@@ -12,7 +12,7 @@ bob := person{
 	name: "Beth",
 }
 bob.name = "Bob"
-println(beth.name)
+println(bob.name)
 
 // Just like we use brackets for both reading and writing to a map, we use dotted
 // notation for reading and writing struct fields.
