@@ -1,0 +1,12 @@
+//
+// A field in a struct is accessed with dotted notation:
+
+bob := person{
+	age:  30,
+	name: "Beth",
+}
+bob.name = "Bob"
+println(beth.name)
+
+// Just like we use brackets for both reading and writing to a map, we use dotted
+// notation for reading and writing struct fields.

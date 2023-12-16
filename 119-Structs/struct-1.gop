@@ -1,0 +1,33 @@
+// Maps are a convenient way to store some kinds of data, but they have
+// limitations. They don’t define an API since there’s no way to constrain a map to
+// only allow certain keys. All of the values in a map must also be of the same type.
+// For these reasons, maps are not an ideal way to pass data from function to
+// function. When you have related data that you want to group together, you
+// should define a struct.
+//
+// A struct type is defined with the keyword type, the name of the struct type, the
+// keyword struct, and a pair of braces ({}). Within the braces, you list the
+// fields in the struct. Just like we put the variable name first and the variable type
+// second in a var declaration, we put the struct field name first and the struct field
+// type second.
+//
+// Also note that unlike map literals, there are no commas separating
+// the fields in a struct declaration. You can define a struct type inside or outside of
+// a function. A struct type that’s defined within a function can only be used within
+// the function. Technically, you can scope a struct definition to any block level.
+//
+// Once a struct type is declared, we can define variables of that type.
+
+type person struct {
+	name string
+	age  int
+	pet  string
+}
+
+var fred person
+
+println(fred)
+
+// Here we are using a var declaration. Since no value is assigned to fred, it gets
+// the zero value for the person struct type. A zero value struct has every field set
+// to the field’s zero value.

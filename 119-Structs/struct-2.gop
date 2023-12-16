@@ -1,0 +1,17 @@
+# There are two different styles for a non-empty struct literal. 
+// A struct literal can be specified as a comma-separated list of values for the fields
+// inside of braces:
+
+tsb := person{}
+println(tsb)
+
+julia := person{
+	"Julia",
+	40,
+	"cat",
+}
+println(julia)
+
+// When using this struct literal format, a value for every field in the struct must be
+// specified, and the values are assigned to the fields in the order they were
+// declared in the struct definition.

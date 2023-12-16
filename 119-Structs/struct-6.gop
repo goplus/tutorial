@@ -1,0 +1,44 @@
+# Comparing and Converting Structs
+// Whether or not a struct is comparable depends on the struct’s fields. Structs that
+// are entirely composed out of comparable types are comparable; those with slice
+// or map fields are not (as we will see in later chapters, function and channel fields
+// also prevent a struct from being comparable).
+//
+// Unlike Python or Ruby, there’s no magic method that can be overridden to
+// redefine equality and make == and != work for incomparable structs. You can,
+// of course, write your own function that you use to compare structs.
+//
+// Just like Go+ doesn’t allow comparisons between variables of different primitive
+// types, Go+ doesn’t allow comparisons between variables that represent structs of
+// different types. Go+ does allow you to perform a type conversion from one struct
+// type to another if the fields of both structs have the same names, order, and
+// types. Let’s see what this means. Given this struct:
+
+type firstPerson struct {
+	name string
+	age  int
+}
+
+type secondPerson struct {
+	name string
+	age  int
+}
+
+type thirdPerson struct {
+	age  int
+	name string
+}
+
+first := firstPerson{name: "Bob", age: 22}
+second := secondPerson{name: "Joe", age: 23}
+third := thirdPerson{name: "Sars", age: 24}
+first = firstPerson(second)
+println first
+first = firstPerson(third)
+println first
+
+// We can use a type conversion to convert an instance of secondPerson to
+// firstPerson, but we can’t convert an instance of thirdPerson to firstPerson, because the
+// fields are in a different order.
+// But we can’t use == to compare an instance of firstPerson and an instance of secondPerson or thirdPerson,
+// because they are different types.

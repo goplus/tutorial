@@ -1,0 +1,23 @@
+// Anonymous structs add a small twist to this: if two struct variables are being
+// compared and at least one of them has a type that’s an anonymous struct, you
+// can compare them without a type conversion if the fields of both structs have the
+// same names, order, and types. You can also assign between named and
+// anonymous struct types if the fields of both structs have the same names, order,
+// and types.
+
+type firstPerson struct {
+	name string
+	age  int
+}
+
+f := firstPerson{
+	name: "Bob",
+	age:  50,
+}
+var g struct {
+	name string
+	age  int
+}
+
+g = f
+println f == g
