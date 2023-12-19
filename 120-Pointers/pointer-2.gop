@@ -1,0 +1,26 @@
+# Following a Pointer
+// The phrase following a pointer means reading the value at the memory address that the pointer refers
+// to, and it is done using an asterisk (the * character). The asterisk tells Go+ to follow the pointer and get the value at the memory location. This is known as dereferencing the pointer.
+
+first := 100
+second := &first
+first++
+*second++
+var myNewPointer *int
+myNewPointer = second
+*myNewPointer++
+println("First:", first)
+println("Second:", *second)
+
+// The first new statement defines a new variable, which I have done with the var keyword to emphasize
+// that the variable type is *int, meaning a pointer to an int value. The next statement assigns the value of
+// the second variable to the new variable, meaning that the values of both second and myNewPointer are the
+// memory location of the first value. Following either pointer accesses the same memory location, which
+// means incrementing myNewPointer affects the value obtained by following the second pointer.
+//
+// A common misconception is that the first and second variables have the same value, but that’s not
+// what is happening. There are two values. There is an int value that can be accessed using the variable
+// named first. There is also an *int value that stores the memory location of the first value. The *int value
+// can be followed, which will access the stored int value. But, because the *int value is, well, a value, it can be
+// used in its own right, which means that it can be assigned to other variables, used as an argument to invoke a
+// function, and so on.

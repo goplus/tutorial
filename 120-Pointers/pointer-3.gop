@@ -1,0 +1,14 @@
+# Understanding Pointer Zero Values
+// Pointers that are defined but not assigned a value have the zero-value nil.
+//
+// The pointer second is defined but not initialized with a value and is written out using the println
+// function. The address operator is used to create a pointer to the first variable, and the value of second is
+// written out again.
+//
+// A runtime error will occur if you follow a pointer that has not been assigned a value
+
+first := 100
+var second *int
+println(second)
+second = &first
+println(second)
