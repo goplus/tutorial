@@ -1,0 +1,18 @@
+# Labeling Your “for” Statements
+// By default, the break and continue keywords apply to the for loop that
+// directly contains them. What if you have nested for loops and you want to exit
+// or skip over an iterator of an outer loop? Let’s look at an example. We’re going
+// to modify our string iterating program to stop iterating through a string as
+// soon as it hits a letter “l”
+
+samples := []string{"hello", "apple_π!"}
+outer:
+for _, sample := range samples {
+	for i, r := range sample {
+		println(i, r, string(r))
+		if r == 'l' {
+			continue outer
+		}
+	}
+	println()
+}

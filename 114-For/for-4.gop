@@ -1,0 +1,15 @@
+# 4、Condition for
+// The condition can be omitted, resulting in an infinite loop. You can use break or return to end the loop.
+
+sum := 0
+i := 1
+for i <= 100 {
+    sum += i
+    i++
+}
+println sum
+
+for {
+    println sum++
+}
+

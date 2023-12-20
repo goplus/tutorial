@@ -1,0 +1,26 @@
+# 1、for/<-
+// This is the most common form. You can use it with a slice, map, numeric range or custom iterators.
+//
+// The for value <- arr/map form is used for going through elements of a slice or a map.
+//
+// If an index is required, an alternative form for index, value <- arr can be used.
+
+names := ["Sam", "Peter"]
+for i, name <- names {
+	println i, name
+}
+
+m := {"one": 1, "two": 2}
+for key, val <- m {
+	println key, val
+}
+for key, _ <- m {
+	println key
+}
+
+for val <- names {
+	println val
+}
+for val <- m {
+	println val
+}

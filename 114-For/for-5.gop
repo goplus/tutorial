@@ -1,0 +1,9 @@
+# 5、C for
+// Finally, there's the traditional C style for loop. It's safer than the while form because with the latter it's easy to forget to update the counter and get stuck in an infinite loop.
+
+for i := 0; i < 10; i += 2 {
+    if i == 6 {
+        continue
+    }
+    println i
+}

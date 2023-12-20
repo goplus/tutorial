@@ -1,0 +1,18 @@
+# The for-range Statement
+// What makes a for-range loop interesting is that you get two loop variables.
+// The first variable is the position in the data structure being iterated, while the
+// second is value at that position. The idiomatic names for the two loop variables
+// depend on what is being looped over. When looping over an array, slice, or
+// string, an i for index is commonly used. When iterating through a map, k (for
+// key) is used instead.
+//
+// The second variable is frequently called v for value, but is sometimes given a
+// name based on the type of the values being iterated. 
+//
+// If you don’t need to access the key, use an underscore (_) as the variable’s name. This tells Go+ to ignore the
+// value. 
+
+evenVals := []int{2, 4, 6, 8, 10, 12}
+for _, v := range evenVals {
+    println(v)
+}
