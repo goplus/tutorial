@@ -10,6 +10,8 @@ for i <= 100 {
 println sum
 
 for {
-    println sum++
+    if sum > 0 {
+        break
+    }
 }
 
