@@ -7,12 +7,12 @@
 
 samples := []string{"hello", "apple_π!"}
 outer:
-for _, sample := range samples {
-	for i, r := range sample {
-		println(i, r, string(r))
-		if r == 'l' {
-			continue outer
+	for _, sample := range samples {
+		for i, r := range sample {
+			println(i, r, string(r))
+			if r == 'l' {
+				continue outer
+			}
 		}
+		println()
 	}
-	println()
-}

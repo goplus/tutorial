@@ -6,7 +6,7 @@
 //
 // Go+ also includes the continue keyword, which skips over rest of the body of a
 // for loop and proceeds directly to the next iteration. Technically, you don’t need
-// a continue statement. 
+// a continue statement.
 
 for i := 1; i <= 100; i++ {
 	if i%3 == 0 && i%5 == 0 {

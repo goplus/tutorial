@@ -4,14 +4,13 @@
 sum := 0
 i := 1
 for i <= 100 {
-    sum += i
-    i++
+	sum += i
+	i++
 }
 println sum
 
 for {
-    if sum > 0 {
-        break
-    }
+	if sum > 0 {
+		break
+	}
 }
-

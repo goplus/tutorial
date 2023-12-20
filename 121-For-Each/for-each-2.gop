@@ -7,12 +7,12 @@
 // key) is used instead.
 //
 // The second variable is frequently called v for value, but is sometimes given a
-// name based on the type of the values being iterated. 
+// name based on the type of the values being iterated.
 //
 // If you don’t need to access the key, use an underscore (_) as the variable’s name. This tells Go+ to ignore the
-// value. 
+// value.
 
 evenVals := []int{2, 4, 6, 8, 10, 12}
 for _, v := range evenVals {
-    println(v)
+	println(v)
 }
