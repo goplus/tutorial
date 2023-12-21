@@ -1,0 +1,25 @@
+//
+// The second struct literal style looks like the map literal style:
+
+type person struct {
+	name string
+	age  int
+	pet  string
+}
+
+beth := person{
+	age:  30,
+	name: "Beth",
+}
+println(beth)
+
+// You use the names of the fields in the struct to specify the values. When you use
+// this style, you can leave out keys and specify the fields in any order. Any field
+// not specified is set to its zero value. You cannot mix the two struct literal styles;
+// either all of the fields are specified with keys, or none of them are. For small
+// structs where all fields are always specified, the simpler struct literal style is
+// fine. In other cases, use the key names. It’s more verbose, but it makes clear
+// what value is being assigned to what field without having to reference the struct
+// definition. It’s also more maintainable. If you initialize a struct without using the
+// field names and a future version of the struct adds additional fields, your code
+// will no longer compile.

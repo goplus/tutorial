@@ -1,0 +1,35 @@
+# Anonymous Structs
+// You can also declare that a variable implements a struct type without first giving
+// the struct type a name. This is called an anonymous struct.
+
+var person struct {
+	name string
+	age  int
+	pet  string
+}
+
+person.name = "bob"
+person.age = 50
+person.pet = "dog"
+println(person)
+
+pet := struct {
+	name string
+	kind string
+}{
+	name: "Fido",
+	kind: "dog",
+}
+println(pet)
+
+// In this example, the types of the variables person and pet are anonymous
+// structs. You assign (and read) fields in an anonymous struct just like you do for a
+// named struct type. Just like you can initialize an instance of a named struct with
+// a struct literal, you can do the same for an anonymous struct as well.
+// You might wonder when it’s useful to have a data type that’s only associated
+// with a single instance. There are two common situations where anonymous
+// structs are handy. The first is when you translate external data into a struct or a
+// struct into external data (like JSON or protocol buffers). This is called
+// marshaling and unmarshaling data.
+//
+// Writing tests is another place where anonymous structs pop up.
