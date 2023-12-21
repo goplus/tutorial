@@ -1,0 +1,19 @@
+// A pointer is a variable whose value is a memory address. Pointers are defined using an ampersand (the & character), known as the address operator, followed by
+// the name of a variable
+//
+// A pointer’s type is fixed, which means that when you create a pointer
+// to an int, for example, you change the value that it points to, but you can’t use it to point to the memory
+// address used to store a different type, such as a float64. This restriction is important, pointers are
+// not just memory addresses but, rather, memory addresses that may store a specific type of value.
+//
+// The type of a pointer is based on the type of the variable from which it is created, prefixed with an
+// asterisk (the * character). The type of variable named second is *int, because it was created by applying
+// the address operator to the first variable, whose value is int. When you see the type *int, you know it is a
+// variable whose value is a memory address that stores an int variable.
+//
+
+first := 100
+var second *int = &first
+first++
+println("First:", first)
+println("Second:", second)

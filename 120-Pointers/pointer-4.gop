@@ -1,0 +1,17 @@
+# Pointing at Pointers
+// Given that pointers store memory locations, it is possible to create a pointer whose value is the memory
+// address of another pointer.
+
+first := 100
+second := &first
+third := &second
+println(first)
+println(*second)
+println(**third)
+
+// The syntax for following chains of pointers can be awkward. In this case, two asterisks are required.
+// The first asterisk follows the pointer to the memory location to get the value stored by the variable named
+// second, which is an *int value. The second asterisk follows the pointer named second, which gives access
+// to the memory location of the value stored by the first variable. This isn’t something you will need to do
+// in most projects, but it does provide a nice confirmation of how pointers work and how you can follow the
+// chain to get to the data value.
