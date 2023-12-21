@@ -1,0 +1,15 @@
+# Iterating Over Maps
+// There’s something interesting about how a for-range loop iterates over a
+// map.
+
+m := map[string]int{
+	"a": 1,
+	"c": 3,
+	"b": 2,
+}
+for i := 0; i < 3; i++ {
+	println("Loop", i)
+	for k, v := range m {
+		println(k, v)
+	}
+}

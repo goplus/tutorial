@@ -1,0 +1,25 @@
+# break and continue
+// How do you get out of an infinite for loop without using the keyboard or
+// turning off your computer? That’s the job of the break statement. It exits the
+// loop immediately, just like the break statement in other languages. Of course,
+// you can use break with any for statement, not just the infinite for statement.
+//
+// Go+ also includes the continue keyword, which skips over rest of the body of a
+// for loop and proceeds directly to the next iteration. Technically, you don’t need
+// a continue statement.
+
+for i := 1; i <= 100; i++ {
+	if i%3 == 0 && i%5 == 0 {
+		println("FizzBuzz")
+		continue
+	}
+	if i%3 == 0 {
+		println("Fizz")
+		continue
+	}
+	if i%5 == 0 {
+		println("Buzz")
+		break
+	}
+	println(i)
+}
