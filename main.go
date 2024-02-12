@@ -382,14 +382,19 @@ func handle(root string) func(w http.ResponseWriter, req *http.Request) {
 }
 
 var (
-	host = flag.String("host", "localhost:8000", "Serving host")
+	protocol = "http"
+	address  = "localhost:8000"
+	host     = flag.String("host", address, "Serving host")
 )
 
 func main() {
 	flag.Parse()
-	fmt.Println("Serving Go+ tutorial at", *host)
+	fmt.Printf("Serving Go+ tutorial at %s://%s\n", protocol, *host)
 	http.HandleFunc("/", handle("."))
-	http.ListenAndServe(*host, nil)
+	err := http.ListenAndServe(*host, nil)
+	if err != nil {
+		log.Fatalf("Failed to start server at %s://%s.\nError: %s.", protocol, *host, err)
+	}
 }
 
 // -----------------------------------------------------------------------------
