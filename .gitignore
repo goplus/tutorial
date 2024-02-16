@@ -42,5 +42,6 @@ go.json
 
 .vscode
 .idea
+go.work*
 
 cmd/qfmt/qfmt
