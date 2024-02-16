@@ -1,0 +1,4 @@
+// To emphasize our preference for the command-line style, we introduce `echo` as an alias
+// for `println`:
+
+echo "Hello world"
