@@ -304,6 +304,9 @@ func parseExample(dir string, idx *exampleIndex) *example {
 	for _, fi := range fis {
 		fname := fi.Name()
 		lang := langOf(fname)
+		if lang != "gop" { // only support Go+ examples
+			continue
+		}
 		sourcePath := filepath.Join(dir, fname)
 		sourceSegs := parseAndRenderSegs(sourcePath)
 		if len(sourceSegs) != 0 { // ignore file with no segs
