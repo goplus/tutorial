@@ -1,4 +1,5 @@
 # = vs :=
+
 // := is used for declaring and initializing. Multiple variables can be declared and intialized at one line.
 age := 21 // age is declared and initialized to 21
 println age
