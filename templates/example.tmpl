@@ -31,17 +31,23 @@
           <p>No content yet, you can help us build it <a href="https://github.com/goplus/tutorial/tree/main/{{.Name}}">here</a>.</p>
         {{end}}
         {{range .Files}}
+          {{if .HeadDoc}}
           <div class="docs">
             {{range .HeadDoc}}
               {{.DocsRendered}}
             {{end}}
           </div>
+          {{end}}
+          {{if .Code}}
           <goplus-code half-code language="{{.Lang}}">{{range .Code}}{{if .DocsRendered}}<goplus-code-doc>{{.DocsRendered}}</goplus-code-doc>{{end}}{{.CodeRendered}}{{end}}</goplus-code>
+          {{end}}
+          {{if .TailDoc}}
           <div class="docs">
             {{range .TailDoc}}
               {{.DocsRendered}}
             {{end}}
           </div>
+          {{end}}
         {{end}}
         {{if .Next}}
         <p class="next">
