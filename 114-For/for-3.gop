@@ -1,11 +1,11 @@
-# 3、for/<-/if
-// All loops of for/<- form can have an optional if condition.
+# 3、for/in/if
+// All loops of for/in form can have an optional if condition.
 
 numbers := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-for num <- numbers if num%3 == 0 {
+for num in numbers if num%3 == 0 {
 	println num
 }
 
-for num <- :10 if num%3 == 0 {
+for num in :10 if num%3 == 0 {
 	println num
 }

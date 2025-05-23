@@ -3,7 +3,7 @@
 // The following example shows the lambda expression of XGo style, which is more compact and easy to understand.
 
 func transform(a []float64, f func(float64) float64) []float64 {
-	return [f(x) for x <- a]
+	return [f(x) for x in a]
 }
 
 y := transform([1, 2, 3], x => x * x)
