@@ -45,3 +45,4 @@ go.json
 go.work*
 
 cmd/qfmt/qfmt
+dist
