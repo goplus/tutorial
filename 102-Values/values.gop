@@ -1,10 +1,10 @@
-// Go+ has various value types including strings,
+// XGo has various value types including strings,
 // integers, floats, booleans, etc.
 
 // Here are a few basic examples.
 
 // Strings, which can be added together with `+`.
-println "Go"+"Plus"
+println "X"+"Go"
 
 // Integers and floats.
 println "1+1 =", 1+1

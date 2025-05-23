@@ -12,12 +12,12 @@ func main() {
 // starting to allow you to establish some basic logic for functional decomposition and team
 // collaboration.
 
-// So, how do you try to play Go+?
+// So, how do you try to play XGo?
 
-// The simplest, go directly to Go+ Playground to play:
+// The simplest, go directly to XGo Playground to play:
 
-// * https://play.goplus.org/
+// * https://play.xgo.dev
 
 // When learning basic grammar in the early days, it can actually be done in this way.
 
-// How to install Go+ to play locally? We will talk about this topic later.
+// How to install XGo to play locally? We will talk about this topic later.

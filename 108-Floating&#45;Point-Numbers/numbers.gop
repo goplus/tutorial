@@ -1,4 +1,4 @@
-// There are two floating point types in Go+, float32 and float64
+// There are two floating point types in XGo, float32 and float64
 // Floating point literals have a default type of float64.
 //
 // A floating-point number cannot represent a decimal value exactly. Do not use them to

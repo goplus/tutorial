@@ -1,1 +1,1 @@
-// In Go+ there is no foreach loop instead, the for loop can be used as “foreach“. There is a keyword range, you can combine for and range together and have the choice of using the key or value within the loop.
+// In XGo there is no foreach loop instead, the for loop can be used as “foreach“. There is a keyword range, you can combine for and range together and have the choice of using the key or value within the loop.

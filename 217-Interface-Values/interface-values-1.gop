@@ -1,10 +1,10 @@
 // The value of the interface type and the interface value are two different concepts.
 
-// Go+ is a statically typed programming language, types are a compile time concept, so a type is not a value.
+// XGo is a statically typed programming language, types are a compile time concept, so a type is not a value.
 // The value of the type descriptor provides information about each type, such as its name and methods.
 // In an interface value, the type component is represented by the appropriate type descriptor.
 
-// In Go+, interfaces variables are always initialize well-defined value as other type variables.
+// In XGo, interfaces variables are always initialize well-defined value as other type variables.
 // The zero value for an interface has both its type and value components set to nil, for example:
 
 import (

@@ -15,7 +15,7 @@
 
 println("hello" + "\t" + "world") // hello   world
 
-// If we want to know the length of the strings taken up by bytes, we can use Go+'s built-in
+// If we want to know the length of the strings taken up by bytes, we can use XGo's built-in
 // functions to calculate it:
 
 println(len("helloword")) // 9
@@ -37,7 +37,7 @@ str3 := "zs"
 
 println(str2 + str3) // my name is      zs
 
-// If we want to define a multi-line string, Go+ supports that too. Using the traditional
+// If we want to define a multi-line string, XGo supports that too. Using the traditional
 // "" is not possible across lines, we can use backquotes if we want to define a multi-line
 // string: `
 

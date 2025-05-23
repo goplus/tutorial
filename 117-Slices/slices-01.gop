@@ -1,14 +1,14 @@
-# Slice literals in Go+ style
+# Slice literals in XGo style
 // A slice is a collection of data elements of the same type. A slice literal is a list of expressions surrounded by square brackets. An individual element can be accessed using an index expression. Indexes start from 0.
 //
-// In go+, you can get slice length directly from len method, and you can casting slice literals:
+// In XGo, you can get slice length directly from len method, and you can casting slice literals:
 
 f64 := []float64([1, 2, 3]) // []float64
 println(f64, f64.len)       // get length by len method
 
 nums := [1, 2, 3]
 println nums      // [1 2 3]
-println nums.len  // 3, go+ support
+println nums.len  // 3, XGo support
 println nums[0]   // 1
 println nums[1:3] // [2 3]
 println nums[:2]  // [1 2]

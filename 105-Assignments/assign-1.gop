@@ -1,6 +1,6 @@
 # assignment
 
-// = is used for assigning.  The values of multiple variables can be changed in one line. In this way, their values can be swapped without an intermediary variable.
+// `=` is used for assigning.  The values of multiple variables can be changed in one line. In this way, their values can be swapped without an intermediary variable.
 var age int
 
 age = 21 // = is used for assigning.

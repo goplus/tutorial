@@ -1,4 +1,4 @@
-// In Go+, _variables_ are explicitly declared and used by
+// In XGo, _variables_ are explicitly declared and used by
 // the compiler to e.g. check type-correctness of function
 // calls.
 
@@ -11,7 +11,7 @@ println a
 var b, c int = 1, 2
 println b, c
 
-// Go+ will infer the type of initialized variables.
+// XGo will infer the type of initialized variables.
 var d = true
 println d
 
