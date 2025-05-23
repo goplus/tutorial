@@ -8,9 +8,9 @@
 // redefine equality and make == and != work for incomparable structs. You can,
 // of course, write your own function that you use to compare structs.
 //
-// Just like Go+ doesn’t allow comparisons between variables of different primitive
-// types, Go+ doesn’t allow comparisons between variables that represent structs of
-// different types. Go+ does allow you to perform a type conversion from one struct
+// Just like XGo doesn’t allow comparisons between variables of different primitive
+// types, XGo doesn’t allow comparisons between variables that represent structs of
+// different types. XGo does allow you to perform a type conversion from one struct
 // type to another if the fields of both structs have the same names, order, and
 // types. Let’s see what this means. Given this struct:
 

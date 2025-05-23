@@ -1,4 +1,4 @@
-// In Go+, an _array_ is a numbered sequence of elements of a
+// In XGo, an _array_ is a numbered sequence of elements of a
 // specific length.
 
 # Declaration of a one-dimensional array

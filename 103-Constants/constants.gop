@@ -1,4 +1,4 @@
-// Go+ supports _constants_ of character, string, boolean,
+// XGo supports _constants_ of character, string, boolean,
 // and numeric values.
 
 import (

@@ -10,13 +10,13 @@
 // For int 20 values can also be expressed in hex (0x14), octal (0o24), and binary notation (0b0010100).
 // uint, there are no uint literals. All literal whole numbers are treated as int values.
 //
-// Go+ also supports writing numbers with _ as separator and also support cast bool to number types.
+// XGo also supports writing numbers with _ as separator and also support cast bool to number types.
 // As example shows
 
-num := 1_000_000 //Go+ support, same as 1000000
+num := 1_000_000 //XGo support, same as 1000000
 println num
 
-println int(true)       //Go+ support cast bool to int
+println int(true)       //XGo support cast bool to int
 println float64(true)   //and to float64
 println complex64(true) //and to complex64, and so on.
 

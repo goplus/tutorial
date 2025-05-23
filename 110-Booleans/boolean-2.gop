@@ -1,4 +1,4 @@
-// In go+, you can cast bool to number types.
+// In XGo, you can cast bool to number types.
 
 println int(true)       // 1
 println float64(true)   // 1

@@ -1,5 +1,5 @@
 # Initializing Complex Numbers
-// There are two complex types in Go+. The complex64 and the complex128.
+// There are two complex types in XGo. The complex64 and the complex128.
 // Initializing complex numbers is really easy. You can use the constructor or the initialization syntax as well.
 
 c1 := complex(10, 11) // constructor init

@@ -1,4 +1,4 @@
-// Go+ does not provide the typical, type-driven notion of subclassing, but it does have the ability to “borrow” pieces of an implementation by embedding types within a struct or interface.
+// XGo does not provide the typical, type-driven notion of subclassing, but it does have the ability to “borrow” pieces of an implementation by embedding types within a struct or interface.
 // Only interfaces can be embedded within interfaces.
 
 // The Sample has two struct types, Hello struct and Goodbye struct, each of which implements the Talk interface. And HelloGoodbye struct also implements Talk interface, which it does by combining Hello struct and Goodbye struct into one struct using embedding: it lists the types within the struct but does not give them field names.

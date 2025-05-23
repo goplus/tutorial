@@ -14,7 +14,7 @@ func g() (x int) {
 }
 
 func h() (x int) {
-	for i <- [3, 2, 1] {
+	for i in [3, 2, 1] {
 		v := i
 		defer func() {
 			x = v
@@ -28,4 +28,4 @@ println("g-x:", g())
 println("h-x:", h())
 
 defer println(println("Hello, defer"))
-println("Hello, Go+")
+println("Hello, XGo")

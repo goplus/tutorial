@@ -1,4 +1,4 @@
-// Branching with `if` and `else` in Go+ is
+// Branching with `if` and `else` in XGo is
 // straight-forward.
 
 // Here's a basic example.
@@ -25,4 +25,4 @@ if num := 9; num < 0 {
 }
 
 // Note that you don't need parentheses around conditions
-// in Go+, but that the braces are required.
+// in XGo, but that the braces are required.

@@ -9,11 +9,11 @@ println map[string]int{"Hello": 1, "xsw": 3}
 // {"Hello": 1, "xsw": 3.4}
 println map[string]float64{"Hello": 1, "xsw": 3.4}
 
-// {"Hello": 1, "xsw": "Go+"}
-println map[string]interface{}{"Hello": 1, "xsw": "Go+"}
+// {"Hello": 1, "xsw": "XGo"}
+println map[string]interface{}{"Hello": 1, "xsw": "XGo"}
 
-// {1: 1.4, 3: "Go+"}
-println map[int]interface{}{1: 1.4, 3: "Go+"}
+// {1: 1.4, 3: "XGo"}
+println map[int]interface{}{1: 1.4, 3: "XGo"}
 
 // {}
 println map[string]interface{}{}

@@ -1,6 +1,6 @@
 # Following a Pointer
 // The phrase following a pointer means reading the value at the memory address that the pointer refers
-// to, and it is done using an asterisk (the * character). The asterisk tells Go+ to follow the pointer and get the value at the memory location. This is known as dereferencing the pointer.
+// to, and it is done using an asterisk (the * character). The asterisk tells XGo to follow the pointer and get the value at the memory location. This is known as dereferencing the pointer.
 
 first := 100
 second := &first

@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go+ by Tutorials: {{.Title}}</title>
+    <title>XGo by Tutorials: {{.Title}}</title>
+    <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no"></meta>
     <link rel=stylesheet href="/site.css">
-    <script data-widgets="header,footer,code" src="https://goplus.org/widgets/loader.js"></script>
+    <script data-widgets="header,footer,code" src="https://xgo.dev/widgets/loader.js"></script>
   </head>
   <script>
       onkeydown = (e) => {
@@ -21,7 +22,7 @@
     {{ template "header" }}
     <main class="main example" id="{{.Path}}">
       <ul class="breadcrumb">
-        <li class="breadcrumb-link-item"><a href="https://goplus.org">Go+</a></li>
+        <li class="breadcrumb-link-item"><a href="https://xgo.dev">XGo</a></li>
         <li class="breadcrumb-link-item"><a href="/">Tutorials</a></li>
         <li class="breadcrumb-current-item">{{.Title}}</li>
       </ul>
@@ -39,7 +40,7 @@
           </div>
           {{end}}
           {{if .Code}}
-          <goplus-code half-code language="{{.Lang}}">{{range .Code}}{{if .DocsRendered}}<goplus-code-doc>{{.DocsRendered}}</goplus-code-doc>{{end}}{{.CodeRendered}}{{end}}</goplus-code>
+          <xgo-code half-code language="{{.Lang}}">{{range .Code}}{{if .DocsRendered}}<xgo-code-doc>{{.DocsRendered}}</xgo-code-doc>{{end}}{{.CodeRendered}}{{end}}</xgo-code>
           {{end}}
           {{if .TailDoc}}
           <div class="docs">

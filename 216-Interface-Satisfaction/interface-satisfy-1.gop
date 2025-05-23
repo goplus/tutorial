@@ -1,4 +1,4 @@
-// In Go+, interfaces do not need to be explicitly implemented – i.e. no implement keyword. Instead, interfaces are satisfied implicitly.
+// In XGo, interfaces do not need to be explicitly implemented – i.e. no implement keyword. Instead, interfaces are satisfied implicitly.
 
 // A type satisfies an interface if it possesses all the methods the interface requires. For example,
 // an *os.File satisfies io.Reader, io.Writer, io.Closer, and io.ReadWriter. A *bytes.Buffer satisfies io.Reader, io.Writer, and io.ReadWriter, but does not satisfy io.Closer because it does not have a

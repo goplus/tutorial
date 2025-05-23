@@ -1,7 +1,7 @@
-# Go+ has built-in support for rational numbers:
+# XGo has built-in support for rational numbers:
 //
 //
-// We introduce rational numbers as primitive Go+ types. We use suffix r to denote rational literals. For example, 1r << 200 means a big int whose value is equal to 2^200.
+// We introduce rational numbers as primitive XGo types. We use suffix r to denote rational literals. For example, 1r << 200 means a big int whose value is equal to 2^200.
 //
 // By default, 1r will have the type of bigint.
 // And 4/5r means the rational constant 4/5. It will have the type of bigrat.

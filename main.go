@@ -304,7 +304,7 @@ func parseExample(dir string, idx *exampleIndex) *example {
 	for _, fi := range fis {
 		fname := fi.Name()
 		lang := langOf(fname)
-		if lang != "gop" { // only support Go+ examples
+		if lang != "xgo" && lang != "gop" { // only support XGo examples
 			continue
 		}
 		sourcePath := filepath.Join(dir, fname)
@@ -392,7 +392,7 @@ var (
 
 func main() {
 	flag.Parse()
-	fmt.Printf("Serving Go+ tutorial at %s://%s\n", protocol, *host)
+	fmt.Printf("Serving XGo tutorial at %s://%s\n", protocol, *host)
 	http.HandleFunc("/", handle("."))
 	err := http.ListenAndServe(*host, nil)
 	if err != nil {
