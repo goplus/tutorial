@@ -8,5 +8,6 @@
   "no_content_link": "here",
   "no_content_after": ".",
   "next_example": "Next example:",
-  "lang_switcher_label": "Switch language"
+  "lang_switcher_label": "Switch language",
+  "titles": {}
 }

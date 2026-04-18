@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -33,6 +34,10 @@ func main() {
 		os.Exit(1)
 	}
 	lang := os.Args[1]
+	if !regexp.MustCompile(`^[a-z]{2,10}$`).MatchString(lang) {
+		fmt.Fprintln(os.Stderr, "Error: lang must be a simple language code (e.g. zh, ja, ko)")
+		os.Exit(1)
+	}
 
 	var dirs []string
 	if len(os.Args) > 2 {
@@ -48,7 +53,7 @@ func main() {
 			if fi.IsDir() {
 				name := fi.Name()
 				if len(name) > (chNumLen+1) && name[chNumLen] == '-' {
-					if _, e := strconv.Atoi(name[:1]); e == nil {
+					if _, e := strconv.Atoi(name[:chNumLen]); e == nil {
 						// Skip chapter headings (e.g. 100-, 200-)
 						if !strings.HasSuffix(name[:chNumLen], "00") {
 							dirs = append(dirs, name)
@@ -67,6 +72,8 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Warning: cannot read %s: %v\n", dir, err)
 			continue
 		}
+		langDir := filepath.Join("locales", lang, dir)
+		dirCreated := false
 		for _, fi := range fis {
 			fname := fi.Name()
 			ext := filepath.Ext(fname)
@@ -80,6 +87,9 @@ func main() {
 			// Skip if already exists
 			if _, err := os.Stat(mdPath); err == nil {
 				skipped++
+				continue
+			} else if !os.IsNotExist(err) {
+				fmt.Fprintf(os.Stderr, "Warning: cannot stat %s: %v\n", mdPath, err)
 				continue
 			}
 
@@ -95,15 +105,17 @@ func main() {
 				continue
 			}
 
-			// Create lang directory
-			langDir := filepath.Join("locales", lang, dir)
-			if err := os.MkdirAll(langDir, 0755); err != nil {
-				fmt.Fprintf(os.Stderr, "Error creating %s: %v\n", langDir, err)
-				continue
+			// Create lang directory once per tutorial dir
+			if !dirCreated {
+				if err := os.MkdirAll(langDir, 0755); err != nil {
+					fmt.Fprintf(os.Stderr, "Error creating %s: %v\n", langDir, err)
+					break
+				}
+				dirCreated = true
 			}
 
 			// Write skeleton .md
-			skeleton := strings.Join(docs, "\n---\n")
+			skeleton := strings.Join(docs, "\n\n---\n\n")
 			if err := os.WriteFile(mdPath, []byte(skeleton+"\n"), 0644); err != nil {
 				fmt.Fprintf(os.Stderr, "Error writing %s: %v\n", mdPath, err)
 				continue
@@ -133,7 +145,7 @@ func extractDocSegments(content string) []string {
 			docText = strings.TrimPrefix(trimmed[2:], " ")
 		} else if strings.HasPrefix(trimmed, "#") && !strings.HasPrefix(trimmed, "#!") {
 			isDoc = true
-			docText = "##" + trimmed
+			docText = "## " + strings.TrimPrefix(strings.TrimPrefix(trimmed, "#"), " ")
 		}
 
 		if isDoc {
