@@ -1,0 +1,1 @@
+bool 타입은 불리언 변수를 나타냅니다. bool 타입의 변수는 true 또는 false 두 가지 값만 가질 수 있습니다. bool의 제로 값은 false입니다.
