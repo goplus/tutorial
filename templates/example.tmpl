@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{.Lang}}">
   <head>
     <meta charset="utf-8">
-    <title>XGo by Tutorials: {{.Title}}</title>
+    <title>{{t .Lang "site_title"}}: {{translateTitle .Lang .Title}}</title>
     <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no"></meta>
     <link rel=stylesheet href="/site.css">
@@ -11,25 +11,38 @@
   <script>
       onkeydown = (e) => {
           {{if .Prev}}if (e.key == "ArrowLeft") {
-              window.location.href = '{{.Prev.Path}}';
+              window.location.href = '{{langPrefix .Lang}}{{.Prev.Path}}';
           }{{end}}
           {{if .Next}}if (e.key == "ArrowRight") {
-              window.location.href = '{{.Next.Path}}';
+              window.location.href = '{{langPrefix .Lang}}{{.Next.Path}}';
           }{{end}}
       }
   </script>
   <body>
     {{ template "header" }}
     <main class="main example" id="{{.Path}}">
-      <ul class="breadcrumb">
-        <li class="breadcrumb-link-item"><a href="https://xgo.dev">XGo</a></li>
-        <li class="breadcrumb-link-item"><a href="/">Tutorials</a></li>
-        <li class="breadcrumb-current-item">{{.Title}}</li>
-      </ul>
+      <div class="top-bar">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-link-item"><a href="https://xgo.dev">XGo</a></li>
+          <li class="breadcrumb-link-item"><a href="{{langPrefix .Lang}}/">{{t .Lang "breadcrumb_tutorials"}}</a></li>
+          <li class="breadcrumb-current-item">{{translateTitle .Lang .Title}}</li>
+        </ul>
+        <div class="lang-switcher">
+          <button class="lang-switcher-btn" aria-label="Switch language">
+            <svg class="lang-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            <span>{{if eq .Lang "zh"}}中文{{else}}English{{end}}</span>
+            <svg class="lang-arrow" viewBox="0 0 10 6" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="lang-menu">
+            <a href="{{.Path}}" class="lang-menu-item{{if eq .Lang "en"}} active{{end}}">English</a>
+            <a href="/zh{{.Path}}" class="lang-menu-item{{if eq .Lang "zh"}} active{{end}}">中文</a>
+          </div>
+        </div>
+      </div>
       <div class="text-wrapper">
-        <h2>{{.Title}}</h2>
+        <h2>{{translateTitle .Lang .Title}}</h2>
         {{if .Files}}{{else}}
-          <p>No content yet, you can help us build it <a href="https://github.com/goplus/tutorial/tree/main/{{.Name}}">here</a>.</p>
+          <p>{{t .Lang "no_content_before"}}<a href="https://github.com/goplus/tutorial/tree/main/{{.Name}}">{{t .Lang "no_content_link"}}</a>{{t .Lang "no_content_after"}}</p>
         {{end}}
         {{range .Files}}
           {{if .HeadDoc}}
@@ -52,7 +65,7 @@
         {{end}}
         {{if .Next}}
         <p class="next">
-          Next example: <a href="{{.Next.Path}}">{{.Next.Title}}</a>
+          {{t .Lang "next_example"}} <a href="{{langPrefix .Lang}}{{.Next.Path}}">{{translateTitle .Lang .Next.Title}}</a>
         </p>
         {{end}}
       </div>
@@ -61,6 +74,13 @@
     <script src="./clipboard.min.js"></script>
     <script>
     new ClipboardJS('.copy')
+    document.querySelector('.lang-switcher-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.parentElement.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      document.querySelector('.lang-switcher').classList.remove('open');
+    });
     </script>
   </body>
 </html>

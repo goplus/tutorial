@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{.Lang}}">
   <head>
     <meta charset="utf-8">
-    <title>XGo by Tutorials</title>
+    <title>{{t .Lang "site_title"}}</title>
     <link rel="icon" href="/favicon.svg" />
     <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no"></meta>
     <link rel=stylesheet href="/site.css">
@@ -11,31 +11,50 @@
   <body>
     {{ template "header" }}
     <main class="main">
-      <ul class="breadcrumb">
-        <li class="breadcrumb-link-item"><a href="https://xgo.dev">XGo</a></li>
-        <li class="breadcrumb-current-item">Tutorials</li>
-      </ul>
+      <div class="top-bar">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-link-item"><a href="https://xgo.dev">XGo</a></li>
+          <li class="breadcrumb-current-item">{{t .Lang "breadcrumb_tutorials"}}</li>
+        </ul>
+        <div class="lang-switcher">
+          <button class="lang-switcher-btn" aria-label="Switch language">
+            <svg class="lang-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            <span>{{if eq .Lang "zh"}}中文{{else}}English{{end}}</span>
+            <svg class="lang-arrow" viewBox="0 0 10 6" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="lang-menu">
+            <a href="/" class="lang-menu-item{{if eq .Lang "en"}} active{{end}}">English</a>
+            <a href="/zh/" class="lang-menu-item{{if eq .Lang "zh"}} active{{end}}">中文</a>
+          </div>
+        </div>
+      </div>
       <div class="text-wrapper">
-        <h2>Tutorials</h2>
+        <h2>{{t .Lang "index_heading"}}</h2>
         <p>
-          <a href="https://xgo.dev">XGo</a> is an open source programming language aimed to enable everyone to become a builder of the world.
+          {{t .Lang "index_desc_1"}}
         </p>
         <p>
-          <em>XGo by Tutorials</em> is a hands-on introduction
-          to XGo using annotated example programs. Check out
-          the <a href="hello-world">first example</a> or
-          browse the full list below.
+          {{t .Lang "index_desc_2"}}
         </p>
-        {{range .}}
-          {{if .Title}}<h3 class="example-link-title">{{.Title}}</h3>{{end}}
+        {{range .Chapters}}
+          {{if .Title}}<h3 class="example-link-title">{{translateTitle $.Lang .Title}}</h3>{{end}}
           <ul class="example-link-list">
             {{range .Articles}}
-              <li><a class="example-link" href="{{.Path}}">{{.Title}}</a></li>
+              <li><a class="example-link" href="{{langPrefix $.Lang}}{{.Path}}">{{translateTitle $.Lang .Title}}</a></li>
             {{end}}
           </ul>
         {{end}}
       </div>
     </main>
     {{ template "footer" }}
+    <script>
+    document.querySelector('.lang-switcher-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.parentElement.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      document.querySelector('.lang-switcher').classList.remove('open');
+    });
+    </script>
   </body>
 </html>

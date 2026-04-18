@@ -1,0 +1,9 @@
+一个具体类型可以满足许多不相关的接口。考虑一个组织或销售数字化文化产品（如音乐、电影和书籍）的程序。它可能定义以下一组具体类型：
+---
+		Album
+		Book
+		Movie
+		Magazine
+		Podcast
+		TVEpisode
+		Track

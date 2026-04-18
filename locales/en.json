@@ -1,0 +1,11 @@
+{
+  "site_title": "XGo by Tutorials",
+  "breadcrumb_tutorials": "Tutorials",
+  "index_heading": "Tutorials",
+  "index_desc_1": "<a href=\"https://xgo.dev\">XGo</a> is an open source programming language aimed to enable everyone to become a builder of the world.",
+  "index_desc_2": "<em>XGo by Tutorials</em> is a hands-on introduction to XGo using annotated example programs. Check out the <a href=\"hello-world\">first example</a> or browse the full list below.",
+  "no_content_before": "No content yet, you can help us build it ",
+  "no_content_link": "here",
+  "no_content_after": ".",
+  "next_example": "Next example:"
+}
