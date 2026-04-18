@@ -28,7 +28,21 @@ const (
 )
 
 // supportedLangs defines the non-default languages supported by the site.
-var supportedLangs = map[string]bool{"zh": true}
+var supportedLangs = map[string]bool{"zh": true, "ja": true, "ko": true}
+
+// langEntry represents a language option for the switcher UI.
+type langEntry struct {
+	Code string
+	Name string
+}
+
+// allLangs is the ordered list of all supported languages for template rendering.
+var allLangs = []langEntry{
+	{"en", "English"},
+	{"zh", "中文"},
+	{"ja", "日本語"},
+	{"ko", "한국어"},
+}
 
 // translations holds locale strings keyed by language then by key.
 var translations map[string]map[string]string
@@ -151,6 +165,17 @@ var templateFuncMap = template.FuncMap{
 	},
 	"langPrefix":     langPrefix,
 	"translateTitle": translateTitle,
+	"allLangs": func() []langEntry {
+		return allLangs
+	},
+	"currentLangName": func(code string) string {
+		for _, l := range allLangs {
+			if l.Code == code {
+				return l.Name
+			}
+		}
+		return code
+	},
 }
 
 func init() {
