@@ -8,6 +8,7 @@
   "no_content_link": "这里",
   "no_content_after": "帮助我们完善。",
   "next_example": "下一个示例：",
+  "lang_switcher_label": "切换语言",
   "titles": {
     "Sequential programming": "Sequential Programming 顺序式编程",
     "Structured programming": "Structured Programming 结构化编程",

@@ -7,5 +7,6 @@
   "no_content_before": "No content yet, you can help us build it ",
   "no_content_link": "here",
   "no_content_after": ".",
-  "next_example": "Next example:"
+  "next_example": "Next example:",
+  "lang_switcher_label": "Switch language"
 }
