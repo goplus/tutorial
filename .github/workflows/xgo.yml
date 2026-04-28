@@ -1,5 +1,5 @@
 # This workflow will build a goplus project
-name: Go+
+name: XGo
 
 on:
   push:
@@ -14,16 +14,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up Go/Go+
-      uses: goplus/setup-goplus@v1.1.0
+    - name: Set up Go/XGo
+      uses: goplus/setup-xgo@v1.1.0
       with:
-        go-version: "1.18"
-        gop-version: "main"
+        go-version: "1.24"
+        xgo-version: "main"
 
     - name: SingleFile Mode Test
       run: |
-        gop go -ignore-notated-error -t -s ./...
+        xgo go -ignore-notated-error -t -s ./...
 
-    - name: Go+ Format Test
+    - name: XGo Format Test
       run: |
-        gop fmt -t ./...
+        xgo fmt -t ./...
