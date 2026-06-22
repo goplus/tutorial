@@ -1,7 +1,7 @@
 github.com/goplus/mod v0.20.2 h1:YX72E6AhhRLvlkVnI9cBK6PZvUwtge2hwROh7w9N6Yk=
 github.com/goplus/mod v0.20.2/go.mod h1:lWW62tH7L3Vm42Lr6wlUMYHvsm5w3TkEpE2ulKTgmU8=
-github.com/goplus/xgo v1.7.1 h1:PLlCNjYgtgIvO/NSIg78hbH4qzOFmyKOK15g8p3ZMLY=
-github.com/goplus/xgo v1.7.1/go.mod h1:HfwLG2QD3RBFPXIrTFNKEEWISSdxnWO3u8fY6tUjQ3I=
+github.com/goplus/xgo v1.7.3 h1:rG/dBjbld8r1O94m6qtIOsBvpF1kHPrd4+NtcCVOemU=
+github.com/goplus/xgo v1.7.3/go.mod h1:F/+bGBARd1rIyD5pl1BgqGViRKUh5w03pbk0sPHb9a8=
 github.com/howeyc/fsnotify v0.9.0 h1:0gtV5JmOKH4A8SsFxG2BczSeXWWPvcMT0euZt5gDAxY=
 github.com/howeyc/fsnotify v0.9.0/go.mod h1:41HzSPxBGeFRQKEEwgh49TRw/nKBsYZ2cF1OzPjSJsA=
 github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=
